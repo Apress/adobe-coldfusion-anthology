@@ -1,0 +1,3 @@
+<!--- Closing down the connection --->
+
+<cfexchangeconnection action = "close" connection = "exConn">

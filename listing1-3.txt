@@ -1,0 +1,10 @@
+<!--- Application.cfc (version 2) --->
+
+<cfcomponent output="false">
+  <cfset this.name = "OurApplication">
+  <cfset this.applicationTimeout = createTimeSpan(0,2,0,0)>
+  <cfset this.clientManagement = false>
+  <cfset this.sessionManagement = true>
+</cfcomponent>
+
+

@@ -1,0 +1,24 @@
+<!--- invoking the init method from a returned component reference --->
+
+<cfset AuthorComponent = CreateObject('component', 'authors').Init('cfbookclub')>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

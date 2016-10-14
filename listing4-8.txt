@@ -1,0 +1,56 @@
+<!--- Entry Based on the Passed entryid --->
+
+<cfcomponent displayname="Entry handler" output="False">
+    <cffunction name="onMissingTemplate" returntype="boolean">
+        <cfargument name="targetPage" type="string">
+
+        <cftry>
+        <!--- if the entry is called using a dynamic page starting with 999-title --->
+            <cfset url.entryid=val(listlast(arguments.targetPage, '/'))>
+            <cfset onrequest('entry.cfm')>
+            <cfcatch>
+                <cfset onError(cfcatch, 'onMissingTemplate')>
+            </cfcatch>
+        </cftry>
+
+        <cfreturn True>
+    </cffunction>
+
+    <cffunction name="onRequestStart" returnType="boolean" output="false">
+        <cfargument name="thePage">
+
+        <cfif Not StructKeyExists(url, 'entryid')>
+            <!--- Only check these if the entryid is not defined on the URL  --->
+            <cfif refindnocase('^/[0-9]+', CGI.PATH_INFO)>
+                <!--- if the URL passes the entryid like entryid.cfm/999 --->
+                <cfset variables.entryid=val(removechars(CGI.PATH_INFO, 1,1))>
+            <cfelse>
+                <!--- something went wrong with the URL --->
+                <cfthrow>
+            </cfif>
+        </cfif>
+          
+        <cfreturn true>
+    </cffunction>
+
+    <cffunction name="onRequest" returnType="void">
+        <cfargument name="thePage">
+        <CFQUERY name="qEntry" datasource="blogdb">
+           SELECT *
+           FROM Entries
+           WHERE EntryID =<CFQUERYPARAM value="#url.entryid#" cfsqltype="CF_SQL_INTEGER">
+        </CFQUERY>
+        <cfif qEntry.Recordcount>
+           <cfinclude template="/entry.cfm">
+        <cfelse>
+           <cfinclude template="/missingentry.cfm">
+        </cfif>
+     </cffunction>
+	<cffunction name="onError" returnType="void" output="true">
+		<cfargument name="exception">
+		<cfargument name="eventname">
+		<cfmail to="errors@site.com" from="errors@site.com" subject="Error: #arguments.eventname#" type="HTML">
+			<cfdump var="#arguments.exception#" label="Error: #arguments.eventname#">
+		</cfmail>
+	</cffunction>
+</cfcomponent>

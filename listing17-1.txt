@@ -1,0 +1,12 @@
+<!-- Destination and channel properties in messaging-config.xml file -->
+
+<destination id="siteerrors">
+<properties>
+   <gatewayid>errorsgateway</gatewayid>
+</properties>
+ 
+<channels>
+   <channel ref="cf-longpolling-amf"/>
+   <channel ref="cf-polling-amf"/>
+</channels>
+</destination>

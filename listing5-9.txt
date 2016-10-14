@@ -1,0 +1,8 @@
+<!--- Generating a New Method Using the File System --->
+
+<cfset here = expandPath(".")>
+<cfset temp = getTempFile(here,"cfm")>
+<cffile action="write" file="#temp#" output="<cffunction name=""hello""><cfreturn ""Hello World!""></cffunction>">
+<cfinclude template="#right(temp,len(temp)-len(here)-1)#">
+<cffile action="delete" file="#temp#">
+<cfoutput>#hello()#</cfoutput>

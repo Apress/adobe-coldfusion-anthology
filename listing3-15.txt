@@ -1,0 +1,15 @@
+<!--- Two Examples of Passing Parameters --->
+
+<cfset GetAuthor('Michael')>
+<cfset GetAuthor(name='Michael')>
+
+
+
+
+
+
+
+
+
+
+

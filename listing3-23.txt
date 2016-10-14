@@ -1,0 +1,31 @@
+<!--- using a query variable --->
+
+<cffunction name="QueryLists" returntype="any" output="false" hint="Run a query of the lists table and return any data.">
+    <cfargument name="DSN" hint="The datasource needed for the query call">
+    <!--- make the qLists variable local to the UDF. No need for a local structure as only one variable is going to be created --->
+    <cfset var qLists="">
+	
+    <cfquery name="qLists" datasource="#arguments.DSN#">
+        Select ListID, Listname
+        From Lists
+    </cfquery>
+
+    <cfreturn qLists>
+</cffunction>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

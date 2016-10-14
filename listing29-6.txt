@@ -1,0 +1,16 @@
+<!--- Something fun --->
+
+<cfset Reactor = CreateObject("Component", "reactor.reactorFactory").init(expandPath("reactor.xml"))>
+
+      <config>
+<cfset User = reactor.createRecord("User").load(userId=1)>
+
+<cfoutput>
+    #User.getFirstName()# #User.getLastName()#<br>
+    #User.getAddress().getStreet()#<br>
+    #User.getAddress().getCity()#, #User.getAddress().getState()#É
+ #User.getAddress().getZip()#
+</cfoutput>
+
+
+

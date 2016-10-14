@@ -1,0 +1,9 @@
+<!--- cffunction with an undefined output attribute --->
+
+<cffunction name="showme">
+    <cfset test="test value">
+    this text will be outputted to the screen. #test# will not be evaluated
+   <cfoutput>#test# will be evaluated</cfoutput>
+</cffunction>
+
+

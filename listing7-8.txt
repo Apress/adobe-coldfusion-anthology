@@ -1,0 +1,13 @@
+<!--- Changing the Text Drawing Font --->
+
+<cfset myImg = ImageNew("", 150, 50, "rgb", "white")>
+<cfset ImageSetDrawingColor(myImg, "green")>
+<cfset ImageSetAntialiasing(myImg, "On")>
+<cfset textOptions = StructNew()>
+<cfset textOptions.font = "Georgia">
+<cfset textOptions.size = "16">
+<cfset textOptions.style = "bold">
+<cfset textOptions.strikethrough = false>
+<cfset textOptions.underline = true>
+<cfset ImageDrawText(myImg, "ColdFusion!", 20, 20, textOptions)>
+<cfimage action="writeToBrowser" source="#myImg#">

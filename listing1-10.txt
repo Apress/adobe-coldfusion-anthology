@@ -1,0 +1,17 @@
+<!--- udfs.cfm --->
+
+<cfscript>
+  request.udf = structNew();
+  function doNothing() {
+     return "";
+  }
+
+  request.udf.doNothing = doNothing;
+</cfscript>
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+<!--- effect of setting the output attribute to "false" --->
+
+<cffunction name="showme" output="false">
+     <cfset test="value">
+     #test#	
+</cffunction>
+
+
+
+

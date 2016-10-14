@@ -1,0 +1,30 @@
+<!--- Using a query variable with direct assignment to the local scope --->
+
+<cffunction name="QueryLists" returntype="any" output="false" hint="Run a query of the lists table and return any data.">
+    <cfargument name="DSN" hint="The datasource needed for the query call">
+	
+    <cfquery name="local.qLists" datasource="#arguments.DSN#">
+        Select ListID, Listname
+        From Lists
+    </cfquery>
+
+    <cfreturn qLists>
+</cffunction>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

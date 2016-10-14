@@ -1,0 +1,8 @@
+<!--- Resize an Image Using the cfimage Tag --->
+
+<cfimage action="resize"
+         source="#ExpandPath("lobster.jpg")#"
+         destination="#ExpandPath("lobster-sm.jpg")#"
+         width="150" 
+         height="100" 
+         overwrite="true">

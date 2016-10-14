@@ -1,0 +1,8 @@
+<!-- Lazy loading of the comment collection -->
+
+<object name="Post" table="tbl_Post">
+…
+<onetomany name="Comment" lazy="true">
+…
+</onetomany>
+</object>

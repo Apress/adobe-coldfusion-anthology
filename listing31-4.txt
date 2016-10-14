@@ -1,0 +1,32 @@
+<!--- controllers/todo.cfc  --->
+
+<cfcomponent>
+    
+    <cffunction name="init">
+        <cfargument name="fw" />
+        <cfset variables.fw = arguments.fw />
+        <cfreturn this />
+    </cffunction>
+    
+    <cffunction name="add">
+        <cfargument name="rc" />
+        <cfif not len( trim( rc.name ) )>
+            <cfset rc.message = 'Name is required' />
+            <cfset variables.fw.redirect( 'todo.new', 'message' ) />
+        </cfif>
+    </cffunction>
+    
+    <cffunction name="endAdd">
+        <cfargument name="rc" />
+        <cfset variables.fw.redirect( 'todo.list' ) />
+    </cffunction>
+    
+    <cffunction name="endDone">
+        <cfargument name="rc" />
+        <cfset variables.fw.redirect( 'todo.list' ) />
+    </cffunction>
+    
+</cfcomponent>
+
+
+

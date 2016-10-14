@@ -1,0 +1,31 @@
+<!--- sample init method --->
+
+<cffunction name="Init" returntype="any" output="false">
+    <cfargument name="DSN">
+    <cfset Variables.DSN=Arguments.DSN>
+    <cfreturn this>
+</cffunction>
+
+<cfset AuthorComponent = CreateObject('component', 'authors').Init('cfbookclub')>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

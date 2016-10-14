@@ -1,0 +1,10 @@
+<!--- Old-style method of adding application variables --->
+
+<cfif not isDefined("application.init")>
+  lots of application variables
+  <cfset application.init = true>
+</cfif>
+
+
+
+

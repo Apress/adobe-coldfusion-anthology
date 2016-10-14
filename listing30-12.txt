@@ -1,0 +1,7 @@
+<!-- Using the save() method -->
+
+transfer = application.transferFactory.getTransfer();
+post = transfer.new("post.Post");
+post.setTitle(form.title);
+post.setBody(form.Body);
+transfer.save(post);

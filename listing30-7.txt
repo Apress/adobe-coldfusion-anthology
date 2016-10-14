@@ -1,0 +1,4 @@
+<!-- Example of the new() method -->
+
+transfer = application.transferFactory.getTransfer();
+post = transfer.new("post.Post");

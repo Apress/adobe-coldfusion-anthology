@@ -1,0 +1,25 @@
+<!--- Example Reactor configuration file (Version 3) --->
+
+<reactor>
+    <config>
+          <project value="Scratch" />
+          <dsn value="Scratch" />
+          <type value="mssql" />
+          <mapping value="/data" />
+          <mode value="development" />
+    </config>
+
+    <objects>
+        <object name="User">
+            <hasMany name="Address">
+               <relate from="userId" to="userId" />
+            </hasMany>
+        </object>
+
+        <object name="Address" />
+     </objects>
+</reactor>
+
+
+
+

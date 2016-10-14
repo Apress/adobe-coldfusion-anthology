@@ -1,0 +1,7 @@
+<!--- Passing parameters to the do and include verbs --->
+
+<prefuseaction>
+    <do action="user.authenticate">
+        <parameter name="returnAction" value="task.#myFusebox.thisFuseaction#" />
+    </do>
+</prefuseaction>

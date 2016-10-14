@@ -1,0 +1,6 @@
+<!--- A More Complete Declaration of onMissingMethod() --->
+
+<cffunction name="onMissingMethod" returntype="any" access="public">
+    <cfargument name="missingMethodName" type="string" required="true">
+    <cfargument name="missingMethodArguments" type="struct" required="true">
+</cffunction>

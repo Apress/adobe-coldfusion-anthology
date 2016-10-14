@@ -1,0 +1,21 @@
+<!-- Second XML Example: A Query with Two Rows and Two Columns -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<people>
+    <person>
+        <ID>
+            1
+        </ID>
+        <NAME>
+            Raymond
+        </NAME>
+    </person>
+    <person>
+        <ID>
+            2
+        </ID>
+        <NAME>
+            Jacob
+        </NAME>
+    </person>
+</people>

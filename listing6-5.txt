@@ -1,0 +1,22 @@
+<!--- Updating our document's information using the setinfo action --->
+
+<cfdocument format="pdf" name="mypdf">
+    <cfloop index="x" from="1" to="90">
+        This is a PDF document.
+        <cfif x mod 5 is 0>
+            <cfdocumentitem type="pagebreak" />
+        </cfif>
+    </cfloop>
+</cfdocument>
+
+<cfset fileWrite(expandPath("./mypdf4.pdf"), mypdf)>
+<cfpdf action="getinfo" source="./mypdf4.pdf" name="info">
+
+<cfset info.title = "Modified PDF">
+<cfset info.author = "Darth Doohicky">
+<cfpdf action="setinfo" info="#info#" source="./mypdf4.pdf" 
+    destination="./mypdf4_modified.pdf" overwrite="true">
+
+<cfpdf action="getinfo" source="./mypdf4_modified.pdf" name="info2">
+<cfdump var="#info2#">
+

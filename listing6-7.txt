@@ -1,0 +1,32 @@
+<!--- Using DDX to get the text content of a PDF --->
+
+<cfdocument format="pdf" name="mypdf">
+    <cfloop index="x" from="1" to="90">
+        <cfoutput>
+            <p>
+            This is a PDF document. Dynamic row #x#.
+            </p>
+        </cfoutput>
+    </cfloop>
+</cfdocument>
+<cfset fileWrite(expandPath("./mypdf6.pdf"), mypdf)>
+
+<!--- Create DDX --->
+<cfsavecontent variable="ddx">
+    <?xml version="1.0" encoding="UTF-8"?>
+    <DDX xmlns="http://ns.adobe.com/DDX/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ns.adobe.com/DDX/1.0/ coldfusion_ddx.xsd">
+        <DocumentText result="Out1">
+            <PDF source="doc1"/>
+        </DocumentText>
+    </DDX>
+</cfsavecontent>
+
+<!--- Set parameters --->
+<cfset inputStruct = {doc1="#expandPath('./mypdf6.pdf')#"}>
+<cfset outputStruct = {Out1="#expandPath('./mypdf6.xml')#"}>
+
+<!--- Process DDX --->
+<cfpdf action="processddx" ddxfile="#ddx#" inputfiles="#inputStruct#" outputfiles="#outputStruct#" name="ddxVar">
+
+
+

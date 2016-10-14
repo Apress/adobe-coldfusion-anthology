@@ -1,0 +1,17 @@
+<!--- Backend ColdFusion Component to Search Interface --->
+
+<cfcomponent output="false">
+    <cffunction name="search" access="remote" returnType="query" output="false">
+        <cfargument name="search" type="string" required="true">
+        <cfset var q = "">
+        <cfquery name="q" datasource="coldfusionjedi">
+            select id, title, posted
+            from tblblogentries
+            where title like <cfqueryparam cfsqltype="cf_sql_varchar"
+            value="%#arguments.search#%">
+            or body like <cfqueryparam cfsqltype="cf_sql_longvarchar"
+            value="%#arguments.search#%">
+        </cfquery>
+        <cfreturn q>
+    </cffunction>
+</cfcomponent>

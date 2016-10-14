@@ -1,0 +1,13 @@
+<!--- getbyId base method used by both DAOs --->
+
+<cffunction name="getbyId" returntype="query" output="false" hint="I return a recordset containing the requested object based on the provided Id">
+    <cfargument name="Id" type="numeric" required="yes" hint="The Id of the object to return">
+    <cfset var GetRecord = ””>
+    <cfquery name="GetRecord" datasource="#variables.datasource#">
+        SELECT #variables.FieldNameList#
+        FROM #variables.TableName#
+        WHERE #variables.IdFieldName# = <cfqueryparam value = "#arguments.Id#" CFSQLType = "CF_SQL_INTEGER">
+    </cfquery>
+    <cfreturn GetRecord>
+</cffunction>
+

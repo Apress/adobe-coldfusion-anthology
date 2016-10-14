@@ -1,0 +1,15 @@
+<!-- Customer XML -->
+
+<customer>
+    <fname>John</fname>
+    <lname>Doe</lname>
+    <active>true</active>
+    <address>
+       <address1>123 Main Street</address1>
+       <address2>Apt 1A</address2>
+       <city>Brooklyn</city>
+       <state>NY</state>
+       <zip>12345</zip>
+    </address>
+</customer>
+

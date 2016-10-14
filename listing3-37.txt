@@ -1,0 +1,25 @@
+<!--- Instantiating with the new keyword where the component name/path has a dash --->
+
+<cfset AuthorComponent = new "book.my-authors"() >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

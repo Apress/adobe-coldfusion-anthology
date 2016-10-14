@@ -1,0 +1,22 @@
+<!--- invoking a UDF with no return variable --->
+
+<cffunction name="nextdate">
+    <cfargument name="date" default="#now()">
+    <cfargument name="offset" default="1">
+
+    <cfreturn DateAdd('d', arguments.offset, arguments.date)>
+</cffunction>
+
+<cfinvoke method=" nextdate">
+
+
+
+
+
+
+
+
+
+
+
+

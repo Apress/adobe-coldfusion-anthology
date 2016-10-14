@@ -1,0 +1,6 @@
+<!--- view/v_navigation/showMenu.cfc in an application that uses implied circuits and CFCs for
+fuseactions --->
+
+<cffunction name=”do”>
+    <cfinclude template=”dspMenu.cfm” />
+</cffunction>

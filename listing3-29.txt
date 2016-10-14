@@ -1,0 +1,24 @@
+<!--- Invoking a method using a component reference --->
+
+<cfset author = Authorcomponent.GetAuthor(5)>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

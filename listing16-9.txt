@@ -1,0 +1,8 @@
+<!--- Deleting all attachments of an Exchange item --->
+
+<cfexchangecontact action = "deleteAttachments" uid = "#contactUID#" connection = "exConn">
+
+
+
+
+

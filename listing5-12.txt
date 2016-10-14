@@ -1,0 +1,16 @@
+<!--- proxy.cfc --->
+<cfcomponent output="false">
+    <cffunction name="init">
+        <cfargument name="object">
+        <cfset variables.object = arguments.object>
+        <cfreturn this>
+    </cffunction>
+    <cffunction name="onMissingMethod">
+        <cfargument name="missingMethodName">
+        <cfargument name="missingMethodArguments">
+        <cfset var result = variables.object.call(arguments.missingMethodName, arguments.missingMethodArguments)>
+        <cfif isDefined("result")>
+            <cfreturn result>
+        </cfif>
+    </cffunction>
+</cfcomponent>

@@ -1,0 +1,15 @@
+<!--- An Example Using isJSON --->
+
+<cfset data = ["Jacob", "Lynn", "Noah", "Mazie"]>
+<cfset jsonString = serializeJSON(data)>
+<cfif isJSON(data)>
+    data is JSON
+<cfelse>
+    data is NOT JSON
+</cfif>
+<p>
+<cfif isJSON(jsonString)>
+    jsonString is JSON
+<cfelse>
+    jsonString is NOT JSON
+</cfif>

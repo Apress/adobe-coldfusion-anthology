@@ -1,0 +1,5 @@
+<!-- transfer.TransferFactory CFC -->
+
+application.transferFactory = createObject("component", "transfer.TransferFactory").init(
+"/tblog/resources/xml/datasource.xml", "/tblog/resources/xml/transfer.xml",
+"/tblog/definitions");

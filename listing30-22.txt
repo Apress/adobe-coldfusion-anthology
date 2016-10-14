@@ -1,0 +1,5 @@
+<!-- Using the listByQuery() method -->
+
+query = getTransfer().createQuery("from post.Post as post where post.date > :date);
+query.setParam("date", "1/1/2009", "date");
+result = getTransfer().listByQuery(query);

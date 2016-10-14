@@ -1,0 +1,29 @@
+<!--- Handling 301 Redirects --->
+
+<cffunction name="onMissingTemplate" returntype="boolean" hint="redirect pages or handle the error">
+   <cfargument name="targetPage" type="string">
+
+   <cfswitch expression="#arguments.targetPage#">
+      <cfcase value="/regex.cfm">
+         <cflocation statuscode="301" url="/tutorials/regular-expressions/index.cfm" addtoken="No">
+      </cfcase>
+      <cfcase value="/cfscript.cfm">
+          <cflocation statuscode="301" url="/tutorials/coldfusion-script/index.cfm" addtoken="No">
+      </cfcase>
+      <cfcase value="/bit.cfm">
+          <cflocation statuscode="301" url="/tutorials/bitmask-functions/index.cfm" addtoken="No">
+      </cfcase>
+      <cfdefaultcase>
+
+           <!--- include template to redirect known request errors --->
+           <cfinclude template="/expectederrors.cfm">
+
+           <!--- include template to handle unexpected errors --->
+           <cfinclude template="/missingtemplate.cfm">
+
+      </cfdefaultcase>
+    </cfswitch>
+
+    <cfreturn True>
+</cffunction>
+

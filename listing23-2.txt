@@ -1,0 +1,13 @@
+<!--- Part of a simple product DAO --->
+
+<cffunction name="getProduct" returntype="query" output="false" hint="I return a recordset containing the requested product based on the provided product ID">
+    <cfargument name="ProductID" type="numeric" required="yes" hint="The ID of the product to return">
+    <cfset var Local = StructNew()>
+    <cfquery name="Local.GetProduct" datasource="#variables.datasource#">
+        SELECT ProductID, Title, Price
+        FROM tbl_Product
+        WHERE ProductID = <cfqueryparam value = "#arguments.ProductID#"
+        CFSQLType = "CF_SQL_INTEGER">
+    </cfquery>
+    <cfreturn Local.GetProduct>
+</cffunction>

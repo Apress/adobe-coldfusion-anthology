@@ -1,0 +1,24 @@
+<!--- instantiating and creating a component reference with cfobject --->
+
+<cfobject type="component" component="Authors" name="AuthorComponent">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+<!--- Getting a Valid Session Key --->
+
+validateSiteUser( string username, string password ) {
+    var siteUser = UserService.getValidatedUser( username, password );
+    if ( siteUser.exists() ) {
+        return siteUser.getSessionUUID();
+    } else {
+        return “Invalid credentials”;
+    };
+}

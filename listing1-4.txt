@@ -1,0 +1,6 @@
+<!--- Old-style application management using the cfapplication tag --->
+
+<cfapplication name="OurApplication" applicationTimeout="#createTimeSpan(0,2,0,0#"  clientManagement="false" sessionManagement="true">
+
+
+

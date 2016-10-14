@@ -1,0 +1,12 @@
+<!--- Filtering on a wildcard search - All appointments with a subject related to something called "Max" --->
+
+<cfexchangecalendar action = "get" name = "calendar1" connection = "exConn">
+    <cfexchangefilter name="subject" value="Max">
+</cfexchangecalendar> 
+
+
+
+
+
+
+

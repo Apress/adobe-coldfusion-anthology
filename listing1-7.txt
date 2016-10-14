@@ -1,0 +1,17 @@
+<!--- Application.cfc (version 3) --->
+
+<cfcomponent output="false">
+  <cfset this.name = "OurApplication">
+  <cfset this.applicationTimeout = createTimeSpan(0,2,0,0)>
+  <cfset this.clientManagement = false>
+  <cfset this.sessionManagement = true>
+  <cffunction name="onApplicationStart" returnType="boolean" output="false">
+     <cfset application.dsn = "foo">
+     <cfset application.adminEmail = "ray@camdenfamily.com">
+     <cfreturn true>
+  </cffunction>
+</cfcomponent>
+
+
+
+

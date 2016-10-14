@@ -1,0 +1,16 @@
+<!--- Example Reactor configuration file --->
+  <reactor>
+      <config>
+          <project value="Scratch" />
+          <dsn value="Scratch" />
+          <type value="mssql" />
+          <mapping value="/data" />
+          <mode value="development" />
+      </config>
+
+      <objects>
+         <object name="User" />
+      </objects>
+ </reactor>
+
+

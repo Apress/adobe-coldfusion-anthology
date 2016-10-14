@@ -1,0 +1,11 @@
+public string function asXml( ) {
+    var XMLString = "<product ";
+    var propertyNameList = “name,title”;
+    var i = 0;
+    var propertyName = "";
+    for ( i=1; i lte listLen( propertyNameList ); i++ ) {
+        propertyName = listGetAt( propertyNameList ), i );
+        XMLString = XMLString & ‘#propertyName#=”#get( propertyName )#” ’;
+    }
+    return XMLString & “/>”;
+}

@@ -1,0 +1,27 @@
+<!--- using cftry and cfcatch --->
+
+<cfunction name="testfunction" output="true" returntype="struct">
+        <cfreturn variable1>
+</cffunction>
+<cftry>
+    <cfset testfunction ()>
+    <cfcatch>
+        <cfreturn "error">
+    </cfcatch>
+ </cftry>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

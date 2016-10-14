@@ -1,0 +1,3 @@
+<!--- Very minimal onMissingTemplate() method --->
+
+<cffunction name="onMissingTemplate" />

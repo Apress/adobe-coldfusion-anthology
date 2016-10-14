@@ -1,0 +1,42 @@
+<!--- to-do controller that assumes a to-do service --->
+
+<cfcomponent>
+    
+    <cffunction name="init">
+        <cfargument name="fw" />
+        <cfset variables.fw = arguments.fw />
+        <cfreturn this />
+    </cffunction>
+    
+    <cffunction name="setTodoService">
+        <cfargument name="todoService" />
+        <cfset variables.todoService = arguments.todoService />
+    </cffunction>
+    
+    <cffunction name="add">
+        <cfargument name="rc" />
+        <cfif not len( trim( rc.name ) )>
+            <cfset rc.message = 'Name is required' />
+            <cfset variables.fw.redirect( 'todo.new', 'message' ) />
+        <cfelse>
+            <cfset variables.todoService.create( rc.name ) />
+            <cfset variables.fw.redirect( 'todo.list' ) />
+        </cfif>
+    </cffunction>
+    
+    <cffunction name="done">
+        <cfargument name="rc" />
+        <cfset variables.todoService.markDone( rc.id ) />
+        <cfset variables.fw.redirect( 'todo.list' ) />
+    </cffunction>
+    
+    <cffunction name="list">
+        <cfargument name="rc" />
+        <cfparam name="rc.showcomplete" default="false" />
+        <cfset rc.data = variables.todoService.getAll( rc.showcomplete ) />
+    </cffunction>
+    
+</cfcomponent>
+
+
+

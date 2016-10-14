@@ -1,0 +1,5 @@
+<!--- navigation.cfc in an application that uses CFCs as circuits and methods for fuseactions --->
+
+<cffunction name=”showMenu”>
+    <cfinclude template=”dspMenu.cfm” />
+</cffunction>

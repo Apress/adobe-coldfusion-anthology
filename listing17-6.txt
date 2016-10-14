@@ -1,0 +1,9 @@
+<!-- Publishing the message -->
+
+private function send():void{
+  var message:IMessage = new AsyncMessage();
+  message.body.DETAIL = "Detail of the message";
+  message.body.MESSAGE = "Error message name";
+  message.body.TYPE = "Information";
+  producer.send(message);
+}

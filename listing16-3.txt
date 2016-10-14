@@ -1,0 +1,16 @@
+<!--- An example of a contact structure --->
+
+<cfset contact = structNew()>
+<cfset contact['FirstName'] = "Terrence">
+<cfset contact['LastName'] = "Ryan">
+<cfset contact['email1'] = "terry@numtopia.com">
+<cfset contact['JobTitle'] = "I.T. Director">
+<cfset contact['Company'] = "The Wharton School">
+<cfset contact['WebPage'] = "http://www.numtopia.com/terry">
+<cfset contact['BusinessAddress'] = structNew()>
+<cfset contact['BusinessAddress']['Street']= "3733 Spruce Street Suite 200">
+<cfset contact['BusinessAddress']['City'] = "Philadelphia">
+<cfset contact['BusinessAddress']['State'] = "PA">
+<cfset contact['BusinessAddress']['Zip'] = "19130">
+<cfset contact['BusinessAddress']['Country'] = "USA">
+

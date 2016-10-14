@@ -1,0 +1,13 @@
+<!--- Delegation to Parent Class Method Handling --->
+
+function newfunc(missingMethodName,missingMethodArguments) {
+    var result = 0;
+    if (missingMethodName is "wibble") {
+    return "New method (" & missingMethodName & ")";
+    } else {
+        result = super.onMissingMethod(argumentCollection=arguments);
+        if (isDefined("result")) {
+            return result;
+        }
+    }
+}

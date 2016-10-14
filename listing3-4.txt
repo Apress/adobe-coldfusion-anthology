@@ -1,0 +1,9 @@
+<!--- cffunction with its output attribute set to "true" --->
+
+<cffunction name="showme" output="true">
+    <cfset test="test value">
+     this text will be outputted to the screen. #test# will be evaluated without a CFOUTPUT
+</cffunction>
+
+
+

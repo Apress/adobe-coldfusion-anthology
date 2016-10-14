@@ -1,0 +1,13 @@
+<!--- A template that uses the code in Listing 34-9 --->
+
+<cfajaxproxy cfc="test1" jsclassname="testcfc">
+<script>
+    function callBackEnd() {
+        var namevalue = document.getElementById('name').value;
+        var mycfc = new testcfc();
+        alert(mycfc.sayHello(namevalue));
+    }
+</script>
+<form>
+    <input type="text" id="name"> <input type="button" value="Test" onclick="callBackEnd()">
+</form>

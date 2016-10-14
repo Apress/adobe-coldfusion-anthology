@@ -1,0 +1,16 @@
+<!--- The getinfo action of the cfpdf tag --->
+
+<cfdocument format="pdf" name="mypdf">
+    <cfloop index="x" from="1" to="90">
+        This is a PDF document.
+        <cfif x mod 5 is 0>
+            <cfdocumentitem type="pagebreak" />
+        </cfif>
+    </cfloop>
+</cfdocument>
+
+<cfset fileWrite(expandPath("./mypdf3.pdf"), mypdf)>
+<cfpdf action="getinfo" source="./mypdf3.pdf" name="info">
+<cfdump var="#info#">
+
+

@@ -1,0 +1,25 @@
+<!--- chaining two methods after the function --->
+
+<cfset CreateObject('component', 'authors').Init('cfbookclub').deleteallauthors()>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

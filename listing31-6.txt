@@ -1,0 +1,23 @@
+<!--- views/todo/list.cfm  --->
+
+<cfparam name="rc.showcomplete" default="false" />
+<cfoutput>
+    <p><a href="#buildURL( 'todo.new' )#">Add New Item</a></p>
+    <p>Things To Do:</p>
+    <cfoutput query="rc.data">
+        <form action="#buildURL( 'todo.done' )#" method="post">
+            <input type="hidden" name="id" value="#id#" />
+            <cfif complete>
+                Done
+            <cfelse>
+                <input type="submit" value="Done" />
+            </cfif>
+            #name#
+        </form>
+    </cfoutput>
+    <cfif rc.showcomplete>
+        <p><a href="#buildURL( 'todo.list')#">Show to do items</a></p>
+    <cfelse>
+        <p><a href="#buildURL( 'todo.list&showcomplete=true')#">Show completed items</a></p>
+    </cfif>
+</cfoutput>

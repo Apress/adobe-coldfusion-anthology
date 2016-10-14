@@ -1,0 +1,11 @@
+<!--- Moving a mail item to the Deleted Items folder --->
+
+<cfexchangemail action="move" destinationFolder="Deleted Items" connection="exConn">
+    <cfexchangefilter name = "uid" value="#messageUID#">
+</cfexchangemail>
+
+
+
+
+
+

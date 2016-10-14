@@ -1,0 +1,15 @@
+<!--- Setting a mail item --->
+
+<cfset message = StructNew()>
+<cfset message['IsRead'] = "no">
+<cfset message['Importance'] = "high">
+<cfset message['Sensitivity'] = "private">
+
+<cfexchangemail action="set" message="#message#" uid="#messageUID#"connection="exConn">
+
+
+
+
+
+
+

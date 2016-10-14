@@ -1,0 +1,10 @@
+<!--- Passing parameters to a UDF without the cfargument tag --->
+
+<cfset today=nextdate('1/11/1971', 35) >
+
+
+
+
+
+
+

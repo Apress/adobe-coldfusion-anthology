@@ -1,0 +1,6 @@
+<!--- Specifying named arguments with the argument verb --->
+
+<invoke component="util.myCFC" method="doSomething">
+    <argument name="arg1" value="firstArg" />
+    <argument name="arg2" value="2" />
+</invoke>

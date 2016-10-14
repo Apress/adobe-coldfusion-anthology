@@ -1,0 +1,3 @@
+<!-- Returning a query of all posts with a title of “My First Post” -->
+
+query = transfer.listByProperty("post.Post", "Title", "My First Post");

@@ -1,0 +1,7 @@
+<!---  Return struct example --->
+
+<cfset EmployeeStruct = StructNew()>
+<cfset EmployeeStruct["FirstName"] = "">
+<cfset EmployeeStruct["LastName"] = "">
+<cfset EmployeeStruct["EmployeeId"] = "">
+<cfset EmployeeStruct["__type__"] = "com.EmployeeVO">

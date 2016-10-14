@@ -1,0 +1,12 @@
+<!--- Using the Arguments scope --->
+
+<cfset arguments.date="3/29/1972">
+<cfoutput>#arguments.date#</cfoutput>
+
+
+
+
+
+
+
+

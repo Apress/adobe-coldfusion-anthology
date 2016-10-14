@@ -1,0 +1,9 @@
+-- The GOOD Way, Creating the USERS Table Using varchar. 
+
+CREATE TABLE USERS(
+    USER_ID int IDENTITY(1,1) NOT NULL,
+    FIRST_NAME varchar(50) NOT NULL,
+    LAST_NAME varchar(50) NOT NULL,
+    CONSTRAINT PK_USERS_USER_ID PRIMARY KEY CLUSTERED ( USER_ID ASC )
+)
+

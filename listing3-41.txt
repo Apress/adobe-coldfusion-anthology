@@ -1,0 +1,8 @@
+<!--- Testing the CacheQuery CFC (test.cfm) --->
+
+<!--- Example Data Source - cfbookclub(\CFIDE\gettingstarted\community\db\bookclub.mdb) --->
+<cfif Not StructKeyExists(Server, 'Authors')>
+    <cfset Server.Authors=new CacheQuery('cfbookclub')>
+</cfif>
+<cfset Authors=Server.Authors.GetQuery()>
+<cfoutput query="Authors">#authorid# #firstname# #lastname#<BR></cfoutput>

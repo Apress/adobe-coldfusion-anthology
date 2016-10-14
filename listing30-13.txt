@@ -1,0 +1,4 @@
+<!-- Using the get() method -->
+
+transfer = application.transferFactory.getTransfer();
+post = transfer.get("post.Post", url.id);

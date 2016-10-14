@@ -1,0 +1,22 @@
+<!-- The QueryBean Complex Type -->
+<complexType name="QueryBean">
+    <all>
+        <element name="data" nillable="true" type="intf:ArrayOf_SOAP-ENC_Array" />
+        <element name="ColumnList" nillable="true" type="intf:ArrayOf_SOAP-ENC_string" />
+    </all>
+ </complexType>
+ <complexType name="ArrayOf_SOAP-ENCArray">
+     <complexContent>
+        <restriction base="SOAP-ENC:Array">
+           <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="SOAP-ENC:Array[]" />
+         </restriction>
+     </complexContent>
+ </complexType>
+ <complexType name="ArrayOf_SOAP-ENC_string">
+    <complexContent>
+        <restriction base="SOAP-ENC:Array">
+           <attribute ref="SOAP-ENC:arrayType" wsdl:arrayType="xsd:string[]" />
+        </restriction>
+    </complexContent>
+</complexType>
+

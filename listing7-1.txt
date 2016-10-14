@@ -1,0 +1,6 @@
+<!--- Display Image Dimensions --->
+
+<cfimage action="info" source="#ExpandPath("lobster.jpg")#" structName="imageInfo">
+<cfoutput>
+    <p>Image Dimensions: #imageInfo.width# x #imageInfo.height#</p>
+</cfoutput>

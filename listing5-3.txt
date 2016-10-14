@@ -1,0 +1,6 @@
+<!--- Minimal onMissingMethod() Declaration --->
+
+<cffunction name="onMissingMethod">
+    <cfargument name="missingMethodName" >
+    <cfargument name="missingMethodArguments" >
+</cffunction>

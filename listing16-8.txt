@@ -1,0 +1,7 @@
+<!--- Getting the attachments from an Exchange item --->
+
+<cfexchangecontact action = "getAttachments" name = "contactAttachments" uid = "#contactUID#" connection = "exConn" attachmentPath = "#path#">
+
+
+
+

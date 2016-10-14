@@ -1,0 +1,20 @@
+<!---Sample list.cfm --->
+
+<div align="center">#displayPageLinks()#</div>
+      <table border=1 class="bodytext">
+         <tr>
+             <cfloop list="#propertyNameList#" index="propertyName">
+                 <td><strong>#Object.title( propertyName )#</strong></td>
+             </cfloop>
+         </tr>
+         <cfloop condition="#ObjectIterator.hasMore()#">
+              <cfset Object = ObjectIterator.getNext()>
+              <tr>
+                  <cfloop list="#propertyNameList#" index="PropertyName">
+                      <td valign="top">#Object.display( propertyName )#</td>
+                  </cfloop>
+              </tr>
+        </cfloop>
+     </table>
+<div align="center">#displayPageLinks()#</div>
+

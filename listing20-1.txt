@@ -1,0 +1,5 @@
+<!--- A Controller Method Calling the Model --->
+
+public void list( event ) {
+    event.setValue( “articleList” , ArticleService.getAll() );
+}

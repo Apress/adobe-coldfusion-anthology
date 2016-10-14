@@ -1,0 +1,7 @@
+<!--- Setting the Presentation Style --->
+<cfpresentation backgroundcolor="0x006633" control="normal" controllocation="right" 
+        primarycolor="0x009933" directory=""/presentation"" overwrite="yes"
+        shadowcolor="0x000000" shownotes="yes" showoutline="yes" showsearch="yes"
+        textcolor="0xFFFFFF" title="My First Presentation">
+
+</cfpresentation>

@@ -1,0 +1,15 @@
+<!--- Searching for my Ben Forta contact --->
+
+<cfexchangecontact action = "get" name = "contactList" connection = "exConn">
+    <cfexchangefilter name = "displayAs" value = "Forta, Ben">
+</cfexchangecontact>
+
+
+
+
+
+
+
+
+
+

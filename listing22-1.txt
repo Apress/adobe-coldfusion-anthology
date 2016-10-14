@@ -1,0 +1,14 @@
+<!--- Employee OO CFC Example --->
+
+<cfcomponent>
+    <cfset this.FirstName = "">
+    <cfset this.LastName = "">
+    <cffunction name="Init">
+        <cfset this.FirstName = "James">
+        <cfset this.LastName = "Smith">
+        <cfreturn this>
+    </cffunction>
+    <cffunction name="GetFullName">
+        <cfreturn this.FirstName & " " & this.LastName>
+    </cffunction>
+</cfcomponent>

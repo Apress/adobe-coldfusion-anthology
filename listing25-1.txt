@@ -1,0 +1,9 @@
+
+<!-- fusebox.xml in an application using XML for circuits and fuseactions -->
+
+<fusebox>
+<circuits>
+    <circuit alias=”navigation” path=”nav/” parent=”/” />
+</circuits>
+…
+</fusebox>

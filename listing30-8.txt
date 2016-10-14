@@ -1,0 +1,4 @@
+<!-- Example of setting values on a TransferObject -->
+
+post.setTitle(form.title);
+post.setBody(form.Body);

@@ -1,0 +1,5 @@
+<!--- Creating a slide --->
+         
+<cfpresentationslide title="my First Slide" presenter="Wally Kolcz" notes="This is my first slide." duration="15">
+    Hello World. Welcome to my first presentation and slide!
+</cfpresentationslide>

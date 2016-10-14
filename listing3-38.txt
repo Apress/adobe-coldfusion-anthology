@@ -1,0 +1,39 @@
+<!--- Constructor examples --->
+
+<cfcomponent output="False" initmethod="newinit" extends="initparent">
+	<cffunction name="newinit">
+			initmethod used as constructor
+	</cffunction>
+	
+	<cffunction name="init">
+			init used as constructor
+	</cffunction>
+
+	<cffunction name="onmissingmethod">
+		<cfargument name="missingMethodName" type="string">
+		<cfargument name="missingMethodArguments" type="struct">
+			init method missing
+	</cffunction>
+</cfcomponent>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

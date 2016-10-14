@@ -1,0 +1,28 @@
+<!--- isPDFObject Example --->
+
+<cfdocument format="pdf" name="mypdf">
+    This is a PDF document.
+</cfdocument>
+
+<cfif isPDFObject(mypdf)>
+    <p>
+        The variable mypdf is a PDF object.
+    </p>
+</cfif>
+
+<cfset mystring = "I am not a PDF">
+<cfif not isPDFObject(mystring)>
+    <p>
+        The variable mystring is not a PDF object.
+    </p>
+</cfif>
+
+<cfset fileWrite(expandPath("./mypdf.pdf"), mypdf)>
+
+<cfif isPDFFile(expandPath("./mypdf.pdf"))>
+    <cfoutput>
+        <p>
+            The file #expandPath("./mypdf.pdf")# is a valid PDF.
+        </p>
+    </cfoutput>
+</cfif>

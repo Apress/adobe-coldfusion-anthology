@@ -1,0 +1,14 @@
+<!-- Example result from the processddx action in Listing 6-7 -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<DocText xmlns="http://ns.adobe.com/DDX/DocText/1.0/">
+    <TextPerPage>
+        <Page pageNumber="1">This is a PDF document. Dynamic row 4. ...</Page>
+        <Page pageNumber="2">This is a PDF document. Dynamic row 62. ...</Page>
+        <Page pageNumber="3">This is a PDF document. Dynamic row 90. ...</Page>
+    </TextPerPage>
+</DocText>
+
+
+
+

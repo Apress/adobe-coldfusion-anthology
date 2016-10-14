@@ -1,0 +1,10 @@
+<!--- Dump EXIF Metadata --->
+
+<cfimage action="read" source="lobster.jpg" name="img">
+<cfset exif = ImageGetEXIFMetaData(img)>
+<cfoutput>
+    <cfif StructKeyExists(exif, "Model")>
+        <p>Camera Model: #exif["Model"]#</p>
+    </cfif>
+</cfoutput>
+<cfdump var="#exif#">

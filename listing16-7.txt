@@ -1,0 +1,6 @@
+<!--- Deleting an item --->
+
+<cfexchangecontact action= "delete" connection= "exConn" result="contactUID">
+
+
+

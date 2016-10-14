@@ -1,0 +1,24 @@
+<!--- instantiating and invoking a method using cfinvoke --->
+
+<cfinvoke component="Authors" method="GetAuthor" returnvariable="Author">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

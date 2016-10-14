@@ -1,0 +1,25 @@
+<!--- instantiating with the "new" keyword --->
+
+<cfset AuthorComponent = new authors() >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

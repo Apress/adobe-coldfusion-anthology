@@ -1,0 +1,16 @@
+<!-- WSDL with an Array Complex Type -->
+<complexType name="Customer">
+     <sequence>
+         <element name="active" nillable="true" type="xsd:boolean"/>
+         <element name="fname" nillable="true" type="xsd:string"/>
+         <element name="lname" nillable="true" type="xsd:string"/>
+     </sequence>
+ </complexType>
+ <complexType name="ArrayOfCustomer">
+     <complexContent>
+         <restriction base="soapenc:Array">
+             <attribute ref="soapenc:arrayType" wsdl:arrayType="impl:Customer[]"/>
+        </restriction>
+    </complexContent>
+</complexType>
+

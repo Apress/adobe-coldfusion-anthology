@@ -1,0 +1,7 @@
+<!--- An example of the dynamic do --->
+
+<cfscript>
+    if (loginSuccessful){
+        myFusebox.do(“navigation.showMenu”);
+    }
+</cfscript>

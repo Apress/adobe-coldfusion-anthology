@@ -1,0 +1,23 @@
+<!--- Fusebox 4.1 code --->
+
+<!--- Showquote Fuseaction --->
+<fuseaction name="showquote">
+    <include template="actGetQuote" />
+    <if condition="len(stockPrice) neq 0">
+        <true>
+            <include template="dspStockQuote" />
+        </true>
+        <false>
+            <include template="dspQuoteFailed" />
+        </false>
+    </if>
+</fuseaction>
+<!--- actGetQuote.cfm --->
+<cftry>
+    <cfinvoke component="#application.stockTracker#" method="getQuote" returnvariable="stockPrice">
+        <cfinvokeargument name="symbol" value="#attributes.symbol#">
+    </cfinvoke>
+    <cfcatch type="any">
+        <cfset stockPrice = "">
+    </cfcatch>
+</cftry>

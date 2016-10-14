@@ -1,0 +1,23 @@
+<!--- Sample error handling code --->
+
+<cffunction name="HandleError" access="public" returntype="void">
+    <cfargument name="ErrorObject">
+    <!--- Call custom function to write the details of the error to a database --->
+    <cfset LogErrorToDatabase(ErrorObject = arguments.ErrorObject)>
+    <!--- Call custom function to email the details of the error to service administrators --->
+    <cfset NotifyAdministrators(ErrorObject = arguments.ErrorObject)>
+</cffunction>
+You can now use this method throughout your service code:
+<cfset ServiceResults = StructNew()>
+<cfset ServiceResults.Success = true>
+<cfset ServiceResults.Message = "">
+<cfset ServiceResults.Detail = "">
+<cftry>
+    ...
+    <cfcatch type="database">
+        <cfset HandleError(cfcatch)>
+        <cfset ServiceResults.Success = false>
+        <cfset ServiceResults.Message = "Request failed">
+        <cfset ServiceResults.Detail = "Your request failed because of a database error. The error has been logged and administrators have been notified.">
+    </cfcatch>
+</cftry>

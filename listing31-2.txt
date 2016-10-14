@@ -1,0 +1,10 @@
+<!--- main.cfc --->
+
+<cfcomponent output="false">
+    <cffunction name="default">
+        <cfargument name="rc" />
+        <cfset rc.theTime = now() />
+    </cffunction>
+</cfcomponent>
+
+

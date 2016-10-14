@@ -1,0 +1,8 @@
+<!--- Creating the Service in the Controller's Constructor --->
+
+<cffunction name="init">
+        <cfargument name="fw" />
+        <cfset variables.fw = arguments.fw />
+        <cfset variables.todoService = createObject( 'component', 'model.ToDoService' ).init() />
+        <cfreturn this />
+    </cffunction>

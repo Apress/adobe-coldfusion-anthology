@@ -1,0 +1,5 @@
+<!-- Using the readByPropertyMap() method -->
+
+map = StructNew();
+map.title = "My First Post";
+post = transfer.readByPropertyMap("post.Post", map) ;

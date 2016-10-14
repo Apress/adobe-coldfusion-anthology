@@ -1,0 +1,14 @@
+<!--- CFML Template For Displaying a User Object --->
+<table border=1 class="bodytext">
+     <tr>
+            <td><strong>First Name</strong></td>
+            <td><strong>Last Name</strong></td>
+            <td><strong>Email</strong></td>
+     </tr>
+     <cfloop condition="#UserIterator.hasMore()#">
+	<cfset User = UserIterator.getNext()>
+         <tr>
+               <td valign="top">#user.displayFirstName()#</td>
+        </tr>
+    </cfloop>
+</table>

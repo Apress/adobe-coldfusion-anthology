@@ -1,0 +1,31 @@
+<!-- Parsing the XML into an Array -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<DocText xmlns="http://ns.adobe.com/DDX/DocText/1.0/">
+    <TextPerPage>
+        <Page pageNumber="1">This is a PDF document. Dynamic row 4. ...</Page>
+        <Page pageNumber="2">This is a PDF document. Dynamic row 62. ...</Page>
+        <Page pageNumber="3">This is a PDF document. Dynamic row 90. ...</Page>
+    </TextPerPage>
+</DocText>
+<!--- Read in and parse XML --->
+<cffile action="read" file="#outputStruct.out1#" variable="myxml">
+<cfset myxml = xmlParse(myxml)>
+<cfset results = []>
+
+<!--- Ensure valid stuff --->
+<cfif structKeyExists(myxml, "DocText") and
+    structKeyExists(myxml.DocText,"TextPerPage") and
+    structKeyExists(myxml.DocText.TextPerPage, "Page")>
+    <cfloop index="x" from="1"
+        to="#arrayLen(myxml.DocText.TextPerPage.Page)#">
+        <cfset node = myxml.DocText.TextPerPage.Page[x]>
+        <cfset text = node.xmltext>
+        <cfset arrayAppend(results, text)>
+    </cfloop>
+</cfif>
+<cfdump var="#results#">
+
+
+
+

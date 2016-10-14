@@ -1,0 +1,3 @@
+<!--- Setting strictMapping to False When Using DeserializeJSON --->
+
+<cfset newData = deserializeJSON(json1,false)>

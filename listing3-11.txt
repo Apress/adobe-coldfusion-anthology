@@ -1,0 +1,24 @@
+<!--- Scope of Variables --->
+
+<cffunction name="testfunction" output="true">
+   <cfargument name="variable1" default="set to Arguments and local scope">
+   <cfargument name="variable2">
+   <cfset arguments.variable3="set to the Arguments scope">
+   <cfset variable2="load variable 2">
+
+   #variable1# is the same as #arguments.variable1#<BR>
+   #variable2# is the same as #arguments.variable2#<BR>
+   #Arguments.variable3# needs the arguments prefix<BR>
+
+    <cfset variable1="new value">
+    #arguments.variable1# now has a different value
+</cffunction>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+<!--- services/todo.cfc  --->
+
+<cfcomponent>
+    
+    <cffunction name="add">
+        <cfargument name="name" />
+        <cfset var newItem = 0 />
+        <cfquery name="newItem" datasource="todo">
+            insert into todo ( name )
+            values ( <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.name#" /> )
+        </cfquery>
+    </cffunction>
+    
+    <cffunction name="done">
+        <cfargument name="id" />
+        <cfset var item = 0 />
+        <cfquery name="item" datasource="todo">
+            update todo
+            set complete = 1
+            where id = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.id#" />
+        </cfquery>
+    </cffunction>
+    
+    <cffunction name="list">
+        <cfargument name="showcomplete" default="false" />
+        <cfset var items = 0 />
+        <cfquery name="items" datasource="todo">
+            select * from todo
+            where complete = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.showcomplete#" />
+        </cfquery>
+        <cfreturn items />
+    </cffunction>
+    
+</cfcomponent>
+
+
+
+

@@ -1,0 +1,5 @@
+<!--- Getting a list of tasks --->
+
+<cfexchangetask action = "get" name = "taskList" connection = "exConn">
+
+

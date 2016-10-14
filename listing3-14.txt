@@ -1,0 +1,21 @@
+<!--- Assigning query results to the local scope --->
+
+<cffunction name="GetAllAuthors" output="false" hint="Query Authors DB and Returns all authors">
+
+       <cfquery name="local.Authors" datasource="authordsn">
+           Select * 
+           from Authors
+       </cfquery>
+
+    <cfreturn authors>
+</cffunction>
+
+
+
+
+
+
+
+
+
+

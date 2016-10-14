@@ -1,0 +1,9 @@
+<!--- Drawing an Unfilled Rectangle --->
+
+<cfset myImg = ImageNew("", 200, 100, "rgb", "white")>
+<cfset ImageSetDrawingColor(myImg, "blue")>
+<cfset stroke = StructNew()>
+<cfset stroke.width = "4">
+<cfset ImageSetDrawingStroke(myImg, stroke)>
+<cfset ImageDrawRect(myImg, 5, 5, 100, 50, false)>
+<cfimage action="writeToBrowser" source="#myImg#">

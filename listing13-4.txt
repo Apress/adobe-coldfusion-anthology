@@ -1,0 +1,22 @@
+<!-- Customer and Address complex types -->
+
+<s:complexType name="Customer">
+   <s:sequence>
+       <s:element name="fname" type="s:string" />
+       <s:element name="lname" type="s:string" />
+       <s:element name="active" type="s:boolean" />
+       <s:element name="address" type="tns:Address" />
+   </s:sequence>
+</s:complexType>
+
+<s:complexType name="Address">
+
+   <s:sequence>
+       <s:element name="address1" type="s:string" />
+       <s:element name="address2" type="s:string" />
+       <s:element name="city" type="s:string" />
+       <s:element name="state" type="s:string" />
+       <s:element name="zip" type="s:string" />
+   </s:sequence>
+</s:complexType>
+

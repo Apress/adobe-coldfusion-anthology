@@ -1,0 +1,16 @@
+<!--- Stacking filters to find every event this week that was Flag Day --->
+
+<cfexchangecalendar action = "get" name = "calendar3" connection = "exConn">
+    <cfexchangefilter name="startTime" from="#now()#" to="#DateAdd('d', 7, now())#">
+    <cfexchangefilter name = "AllDayEvent" value = "TRUE">
+    <cfexchangefilter name = "subject" value = "Flag Day">
+</cfexchangecalendar>
+
+
+
+
+
+
+
+
+

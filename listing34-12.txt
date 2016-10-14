@@ -1,0 +1,42 @@
+<!--- Frontend to Search Interface --->
+
+<cfajaxproxy cfc="test" jsClassName="blog">
+<script>
+    function arrayFind(arr, x) {
+        for(var i=0; i < arr.length; i++) {
+            if(arr[i]==x) return i;
+        }
+    }
+    function handleResults(results) {
+        //find the positions of our columns
+        idcol = arrayFind(results.COLUMNS, "ID");
+        titlecol = arrayFind(results.COLUMNS, "TITLE");
+        //find our results div
+        resultsdiv = document.getElementById("results");
+        resultsdiv.innerHTML = '';
+        for(var i=0; i < results.DATA.length; i++) {
+            var newresult = "<a href='http://www.coldfusionjedi.com/index.cfm?mode=entry&entry=" + results.DATA[i][idcol];
+            newresult += "'>" + results.DATA[i][titlecol] + "</a><br>";
+            resultsdiv.innerHTML+=newresult;
+            }
+    }
+    function searchBlog() {
+        //get the search value
+        var searchterm = document.getElementById("search").value;
+        //if blank, return
+        if(searchterm == '') return;
+        //make an instance of the connection to the blog
+        var blogCFC = new blog();
+        //name the function to call when done
+        blogCFC.setCallbackHandler(handleResults);
+        blogCFC.search(searchterm);
+        resultsdiv = document.getElementById("results");
+        resultsdiv.innerHTML = 'Loading...';
+    }
+</script>
+<form>
+    <input type="text" id="search" name="search"> 
+    <input type="button" value="Search" onClick="searchBlog()">
+</form>
+<div id="results">
+</div>

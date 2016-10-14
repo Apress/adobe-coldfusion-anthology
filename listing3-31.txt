@@ -1,0 +1,24 @@
+<!--- invoking a method from a component reference --->
+
+<cfinvoke component="#AuthorComponent#" method="GetAuthor" returnvariable="Author">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

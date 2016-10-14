@@ -1,0 +1,13 @@
+<!--- views/todo/new.cfm  --->
+
+<cfoutput>
+    <p>New To Do</p>
+    <cfif structKeyExists( rc, 'message' )>
+        <p>Error: #rc.message#</p>
+    </cfif>
+    <form action="#buildURL( 'todo.add' )#" method="post">
+        <p>Name: <input name="name" type="text" /></p>
+        <input type="submit" value="Add" />
+    </form>
+</cfoutput>
+

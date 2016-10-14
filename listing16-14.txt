@@ -1,0 +1,13 @@
+<!--- Filtering on a date range - All appointments starting within the next seven days --->
+
+<cfexchangecalendar action = "get" name = "calendar2" connection = "exConn">
+    <cfexchangefilter name="startTime" from="#now()#" to="#DateAdd('d', 7, now())#">
+</cfexchangecalendar>  
+
+
+
+
+
+
+
+

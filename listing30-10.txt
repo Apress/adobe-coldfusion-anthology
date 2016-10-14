@@ -1,0 +1,7 @@
+<!-- Using the create() method to insert a record -->
+
+transfer = application.transferFactory.getTransfer();
+user = transfer.new("user.User");
+user.setName(form.name);
+user.setEmail(form.email);
+transfer.create(user);

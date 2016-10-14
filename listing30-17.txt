@@ -1,0 +1,5 @@
+<!-- Using TQL -->
+
+query = transfer.createQuery("from post.Post as post where post.title = :title);
+query.setParam("title", "My First Post");
+post = transfer.readByQuery(query);

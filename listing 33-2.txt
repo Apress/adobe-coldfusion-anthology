@@ -1,0 +1,12 @@
+<cfpresentation title="My First Presentation">
+
+<!--- Adding multiple presenters --->
+    <cfpresenter name="Wally Kolcz" email="wkolcz@isavepets.com" 
+         image="images/me.jpg" title="ColdFusion Web Developer" biography="Wally has been
+         a ColdFusion Web Developer for many years.">
+    <cfpresenter name="Siobhan Kolcz" email="skolcz@isavepets.com" 
+         image="images/skolcz.jpg" title="Web Designer" biography="Siobhan is Wally's right-
+         hand lady who makes all our web sites look wonderful">
+
+</cfpresentation>
+

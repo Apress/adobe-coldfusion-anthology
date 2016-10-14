@@ -1,0 +1,11 @@
+<!--- Manipulate an Image Using cfimage --->
+
+<cfimage action="read" source="#ExpandPath("lobster.jpg")#" name="myImg">
+<cfimage action="info" source="#myImg#" structName="imgInfo">
+<cfif imgInfo.width GT 50>
+    <cfimage action="resize" source="#myImg#" width="25%" height="25%" name="myImg">
+    <cfimage action="border" color="red" thickness="3" source="#myImg#" name="myImg">
+    <cfimage action="rotate" angle="15" source="#myImg#" name="myImg">
+    <cfimage action="writeToBrowser" source="#myImg#">
+    <cfimage action="write" source="#myImg#" destination="#ExpandPath("lobster-3.jpg")#" overwrite="true" quality="0.8">
+</cfif>

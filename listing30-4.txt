@@ -1,0 +1,7 @@
+<!-- Post Decorator CFC -->
+
+<cfcomponent hint="Post Decorator" extends="transfer.com.TransferDecorator" output="false">
+    <cffunction name="getNumberOfComments" access="public" hint="Custom function for retrieving how many Comments a Post has" returntype="numeric">
+        <cfreturn ArrayLen(getCommentArray())>
+    </cffunction>
+</cfcomponent>

@@ -1,0 +1,34 @@
+<!--- A Simple Authors CFC --->
+
+<cfcomponent output="false">
+    <cfset Variables.DSN="cfbookclub">
+    <cffunction name="GetAllAuthors" output="false" hint="Query Authors DB and Returns all authors">
+
+       <cfquery name="local.Authors" datasource="#Variables.DSN#">
+           Select * 
+           from Authors
+       </cfquery>
+
+       <cfreturn Authors>
+    </cffunction>
+</cfcomponent>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

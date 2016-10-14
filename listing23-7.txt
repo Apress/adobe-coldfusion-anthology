@@ -1,0 +1,7 @@
+<!--- getProductbySKU() method --->
+
+<cffunction name="getProductbySKU" returntype="query" output="no" hint="I return a recordset containing the product with the requested SKU.">
+    <cfargument name="ProductSKU" type="string" required="yes" hint="The Product SKU">
+    <cfreturn variables.getbyAttribute( "SKU" , arguments.ProductSKU )>
+</cffunction>
+

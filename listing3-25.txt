@@ -1,0 +1,33 @@
+<!--- Querying a specific row --->
+
+<cffunction name="QueryListRow" returntype="any" output="false" hint="Run a query of the lists table and return any data.">
+     <cfargument name="DSN" hint="The datasource needed for the query call">
+     <cfargument name="RowID" hint="The row to return from the lists table.">
+
+     <cfquery name="local.qLists" datasource="#Arguments.DSN#">
+         Select ListID, Listname
+         From Lists
+         Where ListID = <cfqueryparam value="#Arguments.RowID#" cfsqltype="CF_SQL_INTEGER">
+     </cfquery>
+
+     <cfreturn qLists>
+</cffunction>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

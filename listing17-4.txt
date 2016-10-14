@@ -1,0 +1,12 @@
+<!-- The message structure -->
+
+<cfset body = structNew()>
+<cfset body.detail = "A failed login detected with #form.username# as a username from #cgi.remote_addr#">
+<cfset body.message = "Failed Login">
+<cfset body.type = "Information">
+<cfset message = StructNew()>
+<cfset message.body = body>
+<cfset message.Destination = "siteerrors">
+<cfset SendGatewayMessage("errorsgateway", message)>
+
+

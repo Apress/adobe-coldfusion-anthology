@@ -1,0 +1,24 @@
+<!--- instantiating and creating a component reference with createobject() --->
+
+<cfset AuthorComponent = CreateObject('component', 'authors') >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

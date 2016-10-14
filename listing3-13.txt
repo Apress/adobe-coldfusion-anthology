@@ -1,0 +1,22 @@
+<!--- Using var with CFQUERY --->
+
+<cffunction name="GetAllAuthors" output="false" hint="Query Authors DB and Returns all authors">
+
+       <cfset var authors="">
+       <cfquery name="Authors" datasource="authordsn">
+           Select * 
+           from Authors
+       </cfquery>
+
+    <cfreturn authors>
+</cffunction>
+
+
+
+
+
+
+
+
+
+

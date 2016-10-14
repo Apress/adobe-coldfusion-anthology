@@ -1,0 +1,32 @@
+<!--- Implementing Get and Set Calls in a Base Class --->
+
+function onMissingMethod(missingMethodName,missingMethodArguments) {
+    var name = "";
+    // if the missing method is getXyz(), return the xyz variable if it exists
+    if (left(missingMethodName,3) is "get") {
+        name = right(missingMethodName,len(missingMethodName)-3);
+    if (structKeyExists(variables,name)) {
+            return variables[name];
+    } else {
+    // getXyz() but xyz does not exist - throw an exception
+        throw("Expression_", "Element #name# is undefined in a Java object of type class
+        coldfusion.runtime.TemplateProxy.");
+    }
+    // if the missing method is setXyz(), set the xyz variable
+    } else if (left(missingMethodName,3) is "set") {
+        name = right(missingMethodName,len(missingMethodName)-3);
+    // if xyz argument was passed by name...
+    if (structKeyExists(missingMethodArguments,name)) {
+        variables[name] = missingMethodArguments[name];
+    // ...else if xyz argument was passed by position
+    } else if (structKeyExists(missingMethodArguments,1)) {
+        variables[name] = missingMethodArguments[1];
+    // no matching argument
+    } else {
+        throw("Application", "The #uCase(name)# parameter to the get#name# function is required but was not passed in.");
+    }
+    // not a getXyz() or setXyz() method call... throw an exception
+    } else {
+        throw("Application", "The method #missingMethodName# was not found in component #expandPath("/" & replace(getMetadata(this).name,".","/","all"))#", "Ensure that the method is defined, and that it is spelled correctly.");
+    }
+}

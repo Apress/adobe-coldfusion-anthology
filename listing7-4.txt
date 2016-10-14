@@ -1,0 +1,3 @@
+<!--- Generating a CAPTCHA with cfimage --->
+
+<cfimage action="captcha" text="ColdFusion" height="50" width="300">

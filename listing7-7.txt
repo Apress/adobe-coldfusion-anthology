@@ -1,0 +1,7 @@
+<!--- Drawing Text on an Image --->
+
+<cfset myImg = ImageNew("", 120, 50, "rgb", "white")>
+<cfset ImageSetDrawingColor(myImg, "red")>
+<cfset ImageSetAntialiasing(myImg, "On")>
+<cfset ImageDrawText(myImg, "ColdFusion!", 20, 20)>
+<cfimage action="writeToBrowser" source="#myImg#">

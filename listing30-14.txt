@@ -1,0 +1,19 @@
+<!-- Example of composition methods -->
+
+<ul>
+    <!--- show all the comments in the post --->
+    <cfscript>
+        comments = post.getCommentArray();
+        len = ArrayLen(comments);
+    </cfscript>
+    <cfloop from="1" to="#len#" index="counter">
+        <cfset comment = comments[counter]>
+        <li>
+            #comment.getName()# wrote on
+            #DateFormat(comment.getDateTime(), "dd mmm yy")#
+            #TimeFormat(comment.getDateTime(), "hh:mm:ss tt")#
+            :<br/>
+            #comment.getValue()#
+        </li>
+    </cfloop>
+</ul>

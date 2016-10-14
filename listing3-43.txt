@@ -1,0 +1,19 @@
+<!--- CacheQuery.cfc (the parent) --->
+
+<cfcomponent output="false" hint="allows for the caching and use of queries that will be defined in a child component">
+    <cffunction name="Init" returntype="any" output="false" hint="Set the DSN and return the object reference.">
+        <cfargument name="DSN" hint="(String - Required) The Data Source name to be set to the Variables scope">
+        <cfset Variables.DSN=Arguments.DSN>
+        <cfinvoke method="QueryDB">
+        <cfreturn This>
+    </cffunction>
+    <cffunction name="GetQuery" returntype="any" output="false" hint="Return the query to the template">
+        <cfif Not StructKeyExists(Variables, 'CacheQuery')>
+            <cfinvoke method="QueryDB">
+        </cfif>
+        <cfreturn Variables.CacheQuery>
+    </cffunction>
+    <cffunction name="ResetCache" returntype="any" output="false" hint="Resets the cached query">
+        <cfinvoke method="QueryDB">
+    </cffunction>
+</cfcomponent>

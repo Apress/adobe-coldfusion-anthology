@@ -1,0 +1,7 @@
+<!--- Using the Logging Proxy --->
+
+a = createObject("component","alpha");
+p = createObject("component","logging").init(a);
+writeOutput(p.a() & "<br>");
+writeOutput(p.echo(data="named data") & "<br>");
+writeOutput(p.echo("unnamed data") & "<br>");

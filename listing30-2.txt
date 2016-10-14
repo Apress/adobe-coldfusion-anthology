@@ -1,0 +1,74 @@
+<!-- Object configuration file (transfer.xml)  -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<transfer xsi:noNamespaceSchemaLocation="../../../transfer/resources/xsd/transfer.xsd"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<objectDefinitions>
+
+<package name="user">
+<!-- User details -->
+<object name="User" table="tbl_User">
+<id name="IDUser" type="numeric"/>
+<property name="Name" type="string" column="user_Name"/>
+<property name="Email" type="string" column="user_Email"/>
+</object>
+</package>
+
+<package name="system">
+<!-- Different categories for Blog Posts -->
+<object name="Category" table="tbl_Category">
+<id name="IDCategory" type="numeric"/>
+<property name="Name" type="string" column="category_Name"/>
+<property name="OrderIndex" type="numeric"
+column="category_OrderIndex"/>
+</object>
+</package>
+
+<package name="post">
+<!-- A Blog Post -->
+<object name="Post" table="tbl_Post" decorator="tblog.com.Post">
+<id name="IDPost" type="numeric"/>
+<property name="Title" type="string" column="post_Title"/>
+<property name="Body" type="string" column="post_Body"/>
+<property name="DateTime" type="date" column="post_DateTime"/>
+
+<!-- Link between a Post and the User who wrote it -->
+<manytoone name="User">
+<link to="user.User" column="lnkIDUser"/>
+</manytoone>
+
+<!-- Link between a Post and its array of Comments -->
+<onetomany name="Comment">
+<link to="post.Comment" column="lnkIDPost"/>
+
+<!-- Specifying the collection is an array and is ordered by the dateTime
+property of the Comment -->
+<collection type="array">
+<order property="DateTime" order="asc"/>
+</collection>
+</onetomany>
+
+<!-- Link to the many Categories that Posts can fall under. This is provided by
+an intermediate table between the Category table and the Post table. -->
+<manytomany name="Category" table="lnk_PostCategory">
+<link to="post.Post" column="lnkIDPost"/>
+<link to="system.Category" column="lnkIDCategory"/>
+
+<!-- Specifying the collection is an array and is ordered by the orderIndex
+property of the Category -->
+<collection type="array">
+<order property="OrderIndex" order="asc"/>
+</collection>
+</manytomany>
+</object>
+
+<!-- A comment for a blog post -->
+<object name="Comment" table="tbl_Comment">
+<id name="IDComment" type="numeric"/>
+<property name="Name" type="string" column="comment_Name"/>
+<property name="Value" type="string" column="comment_Value"/>
+<property name="DateTime" type="date" column="comment_DateTime"/>
+</object>
+</package>
+</objectDefinitions>
+</transfer>

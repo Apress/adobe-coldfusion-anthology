@@ -1,0 +1,19 @@
+<!--- Creating a variable using the results from a function with multiple parameters --->
+
+<cfinvoke method="nextdate" returnvariable="dayafterbirthday">
+    <cfinvokeargument name="date" value="1/11/1971">
+    <cfinvokeargument name="offset" value="1">
+</cfinvoke>
+
+
+
+
+
+
+
+
+
+
+
+
+

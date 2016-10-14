@@ -1,0 +1,44 @@
+<!-- Consuming the message -->
+
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init()">
+
+  <mx:Script>
+    <![CDATA[
+      import mx.messaging.events.MessageEvent;
+      import mx.messaging.messages.AsyncMessage;
+      import mx.messaging.messages.IMessage;
+      import mx.collections.ArrayCollection;
+      import mx.events.ListEvent;
+         
+      [Bindable]
+      public var messages:ArrayCollection = new ArrayCollection;
+         
+      public function init():void{
+        consumer.subscribe();
+      }
+         
+      private function messageHandler(message:IMessage):void{
+        //The zero index makes certain the newest message is on top
+        messages.addItemAt(message.body,0);
+      }
+     
+      ]]>
+  </mx:Script>
+ 
+  <mx:Consumer id="consumer" destination="siteerrors" message="messageHandler(event.message)"/>
+ 
+  <mx:Panel title="Errors" width="100%" height="100%">
+      <mx:DataGrid id="errorslist" width="100%" dataProvider="{messages}">
+          <mx:columns>
+              <mx:DataGridColumn width="100" dataField="TYPE" headerText="Type" />
+              <mx:DataGridColumn dataField="MESSAGE" headerText="Message" />
+          </mx:columns>
+       </mx:DataGrid>
+       <mx:TextArea id="msgDetails" width="100%" height="100%" htmlText="{errorslist.selectedItem.DETAIL}"/>
+  </mx:Panel>
+ 
+</mx:Application>
+
+
+

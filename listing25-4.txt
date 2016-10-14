@@ -1,0 +1,6 @@
+<!--- controller/navigation/showMenu.cfc in an application that uses implied circuits and CFCs
+for fuseactions --->
+
+<cffunction name=”do”>
+    <cfset myFusebox.do(“v_navigation.showMenu”) />
+</cffunction>

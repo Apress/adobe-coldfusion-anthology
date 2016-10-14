@@ -1,0 +1,3 @@
+-- Altering the USERS Table
+
+ALTER TABLE USERS ADD USER_TYPE CHAR(1) NOT NULL;

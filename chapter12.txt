@@ -1,0 +1,443 @@
+
+<!--- Listing 12-1 --->
+
+<cfcomponent>
+
+	<cffunction 
+		name="WebServiceMethod" 
+		access="remote" 
+		returntype="struct" 
+		returnformat="json" 
+		output="false"
+		hint="I am a publically accessible method that returns objects in JSON format.">
+		
+		<!--- Function logic here. --->
+	</cffunction>
+	
+</cfcomponent>
+
+
+<!--- Listing 12-2 API.cfc --->
+
+
+<cfcomponent
+	output="false"
+	hint="I provide remote access to public functionality of this stie.">
+	
+	<cffunction 
+		name="GetShabbatSunsetFromZipCode" 
+		access="remote" 
+		returntype="struct" 
+		returnformat="json" 
+		output="false"
+		hint="I return the Shabbat-adjusted sunset information for the given zip code and date.">
+		
+		<!--- Define arguments. --->
+		<cfargument 
+			name="ZipCode" 
+			type="string" 
+			required="true"
+			hint="The zip code for which we get the sunset." 
+			/>
+			
+		<cfargument 
+			name="Date" 
+			type="date"
+			required="true" 
+			hint="The date on which we are getting the sunset." 
+			/>
+		
+		<!--- Define the local scope. --->
+		<cfset var LOCAL = {} />
+		
+		<!--- Create a return struct. --->
+		<cfset LOCAL.Return = APPLICATION.Service
+			.GetShabbatSunsetFromZipCode(
+				ARGUMENTS.ZipCode,
+				ARGUMENTS.Date
+				)
+			/>
+			
+		<!--- Echo back the zip code. --->
+		<cfset LOCAL.Return.ZipCode = ARGUMENTS.ZipCode />
+			
+		<!--- 
+			Check to see if the internal method call worked properly
+			(as this call might his a web service, it might fail).
+			If it was a failure, add the appropriate error message.
+		--->
+		<cfif LOCAL.Return.Success>
+			
+			<!--- Copy sunset time. --->
+			<cfset LOCAL.Return.Error = "" />
+			
+		<cfelse>
+		
+			<!--- Set the error message. --->
+			<cfset LOCAL.Return.Error = "Sunset time could not be determined. Try a different zip code." />
+		
+		</cfif>			
+		
+		<!--- Return out. --->
+		<cfreturn LOCAL.Return />
+	</cffunction>
+	
+</cfcomponent>
+
+
+
+
+<!--- Listing 12-3 api.cfm --->
+
+<!--- Make sure there is a method. --->
+<cfparam name="URL.Method" type="string" />
+
+<!--- Param the return format. --->
+<cfparam name="URL.ReturnFormat" type="string" default="json" />
+
+<!--- 
+	Create a default return value (this will be overriden by 
+	the selected methods).
+--->
+<cfset objReturn = "" />
+
+
+<!--- Check to see which method we have selected. --->
+<cfswitch expression="#URL.Method#">
+	<cfcase value="GetShabbatSunsetFromZipCode">
+	
+		<!--- Param the rest of the URL variables. --->
+		<cfparam name="URL.ZipCode" type="string" />
+		<cfparam name="URL.Date" type="date" />
+		
+		<!--- Invoke the web service locally. --->
+		<cfset objReturn = CreateObject( "component", "api" )
+			.GetShabbatSunsetFromZipCode(
+				URL.ZipCode,
+				URL.Date
+				) 
+			/>
+	
+	</cfcase>
+	<cfdefaultcase>
+		
+		<!--- Selected method not found. --->
+		<cfthrow type="API.MethodNotFound" />
+	
+	</cfdefaultcase>
+</cfswitch>
+
+
+<!--- 
+	Because this CFM page is acting as a local proxy for our web 
+	service functionality, we currently have a native ColdFusion 
+	object in our return variable. We need to get this into the 
+	return format of the desired type.
+--->
+<cfswitch expression="#URL.ReturnFormat#">
+	<cfcase value="json">
+		
+		<!--- Convert to JSON. --->
+		<cfset strReturn = SerializeJSON( objReturn ) />
+		
+	</cfcase>
+	
+	<!--- If nothing else matched, we are gonna return WDDX. --->
+	<cfdefaultcase>
+	
+		<!--- Convert to WDDX xml. --->
+		<cfwddx
+			action="cfml2wddx"
+			input="#objReturn#"
+			output="strReturn"
+			/>
+	
+	</cfdefaultcase>
+</cfswitch>
+
+
+<!--- 
+	Now that we have the return value ready, let's return it. We 
+	want to make sure that we don't return ANYTHING but the value. 
+	The easiest way to do that is to convert the string to binary 
+	and stream it back to the client.
+--->
+<cfcontent
+	type="text/plain"
+	variable="#ToBinary( ToBase64( strReturn ) )#"
+	/>
+	
+	
+
+
+
+	
+
+	
+<!--- Invoke the web service locally. --->
+<cfset objReturn = CreateObject( "component", "api" )
+	.GetShabbatSunsetFromZipCode(
+		URL.ZipCode,
+		URL.Date
+		) 
+	/>
+	
+	
+	
+	
+<!--- Listing 12-4 Application.cfc adjustments for remote method calls --->	
+	
+<cffunction
+	name="OnRequestStart"
+	access="public"
+	returntype="boolean"
+	output="false"
+	hint="I run pre-page events.">
+	
+	<!--- Define arguments. --->
+	<cfargument 
+		name="Page" 
+		type="string"
+		required="true" 
+		hint="I am the page template that was requested."
+		/>
+		
+	<!--- Define the local scope. --->
+	<cfset var LOCAL = {} />
+	
+	
+	<!--- 
+		Check to see if this is a CFC-based web service call. If so, we 
+		need to take special precaution in how we process the request.
+	--->	
+	<cfif REFindNoCase( "\.cfc$", ARGUMENTS.Page )>
+		
+		<!--- 
+			Since this is a web service call, we need to get rid of the 
+			OnRequest() event method.
+		--->
+		<cfset StructDelete( VARIABLES, "OnRequest" ) />
+		<cfset StructDelete( THIS, "OnRequest" ) />
+	
+		<!--- 
+			Check to see if we need to exit out of the OnRequestStart() 
+			method call. When a CFC is called using a WSDL (web service 
+			definition language) conversion, there is URL or FORM scopes. 
+			Therefore, if there is no FORM scope, exist out of this method.
+		--->
+		<cfif NOT IsDefined( "FORM" )>
+			<cfreturn true />
+		</cfif>
+		
+	</cfif>
+	
+	
+	<!--- .... Rest of event logic .... --->
+	
+	<!--- Return out. --->
+	<cfreturn true />
+</cffunction>
+
+
+
+
+
+<!--- Listing 12-5 Invoking a web service with the cfinvoke tag --->
+
+<cfinvoke 
+	webservice="#strWebRoot#shabbatclock/site_v1/www/API.cfc?wsdl"
+	method="GetShabbatSunsetFromZipCode"
+	username="********"
+	password="********"
+	returnvariable="objSunset"
+	refreshwsdl="true">
+	
+	<!--- Send web service arguments. --->
+	<cfinvokeargument name="ZipCode" value="10016" />
+	<cfinvokeargument name="Date" value="08/27/2008" />
+</cfinvoke>
+
+
+
+
+
+<!--- Listing 12-6 Using the CreateObject() function --->
+
+<!--- Define the web service meta arguments. --->
+<cfset objAPIArguments = {
+	Username = "********",
+	Password = "********"
+	} />
+
+<!--- 
+	Create our web service object. This will act as if it were a
+	locally instantiated object. But, instead of pointing to our 
+	own library, it points to a remote web service object.
+--->
+<cfset objAPI = CreateObject( 
+	"webservice", 
+	"#strWebRoot#shabbatclock/site_v1/www/API.cfc?wsdl",
+	objAPIArguments
+	) />
+
+<!--- Invoke the web service using proxy object. --->
+<cfset objSunset = objAPI.GetShabbatSunsetFromZipCode(
+	"10016",
+	"08/27/2008"
+	) />
+	
+	
+	
+	
+	
+<!--- Listing 12-7 Invoking a web service with optional arguments --->	
+
+<!--- Create our web service proxy object. --->
+<cfset objAPI = CreateObject( 
+	"webservice", 
+	"#strWebRoot#shabbatclock/site_v1/www/API.cfc?wsdl"
+	) />
+	
+<!--- Invoke the web service using CFInvoke. --->
+<cfinvoke 
+	webservice="#objAPI#"
+	method="MethodWithOptionalArgument"
+	returnvariable="objReturn">
+	
+	<!--- Omit optional agrument. --->
+	<cfinvokeargument name="ID" value="" omit="true" />
+</cfinvoke>
+
+
+
+
+
+
+
+<!--- Listing 12-8 Using the cfhttp tag to invoke a web service --->
+
+!--- 
+	Invoke the web service using CFHttp. 
+	
+	Note: This methodology works for both GET and POST requests.
+	The only difference is that with GET methods, you have to 
+	use URL parameters and with POST methods, you have to use 
+	FormField CFHttpParams.
+--->
+<cfhttp
+	url="#strWebRoot#shabbatclock/site_v1/www/API.cfc"
+	method="post"
+	username="********"
+	password="********"
+	result="objPost">
+	
+	<!--- Pass in Method. --->
+	<cfhttpparam 
+		type="formfield" 
+		name="Method" 
+		value="GetShabbatSunsetFromZipCode" 
+		/>
+		
+	<!--- Pass in the method arguments. --->
+	<cfhttpparam 
+		type="formfield" 
+		name="ZipCode" 
+		value="10016" 
+		/>
+	
+	<cfhttpparam 
+		type="formfield" 
+		name="Date" 
+		value="08/27/2008" 
+		/>
+		
+	<!--- 
+		When using CFHTTP, we have the option to override the 
+		return format. We can do this because using CFHTTP 
+		circumvents ColdFusion's built-in conversion 
+		functionality.... Even though this comes back as JSON, 
+		we are going to ask for WDDX.
+	--->
+	<cfhttpparam 
+		type="formfield" 
+		name="ReturnFormat" 
+		value="wddx" 
+		/>
+		
+</cfhttp>
+
+<!--- 
+	We have asked for the web service information to be returned
+	in WDDX format. Now, let's take that WDDX information and 
+	convert it to a native ColdFusion object (this is the automatic 
+	step we miss when we don't use CFInvoke of CreateObject()).
+--->
+<cfwddx 
+	action="wddx2cfml" 
+	input="#Trim( objPost.FileContent )#" 
+	output="objSunset"
+	/> 
+	
+	
+	
+	
+	
+	
+	
+	
+<!--- Listing 12-9 Invoking a CFM-based web service --->	
+
+<!--- 
+	Invoke the web service using CFHttp. This time, however, 
+	we are going to hit the proxy CFM page rather than the 
+	ColdFusion component. The CFM proxy page expects a GET 
+	method with URL parameters.
+--->
+<cfhttp
+	url="#strWebRoot#shabbatclock/site_v1/www/API.cfm"
+	method="get"
+	username="********"
+	password="********"
+	result="objGet">
+	
+	<!--- Pass in Method. --->
+	<cfhttpparam 
+		type="url" 
+		name="Method" 
+		value="GetShabbatSunsetFromZipCode" 
+		/>
+		
+	<!--- Pass in the method arguments. --->
+	<cfhttpparam 
+		type="url" 
+		name="ZipCode" 
+		value="10016" 
+		/>
+	
+	<cfhttpparam 
+		type="url" 
+		name="Date" 
+		value="08/27/2008" 
+		/>
+		
+	<!--- Make sure this comes back as WDDX. --->
+	<cfhttpparam 
+		type="url" 
+		name="ReturnFormat" 
+		value="wddx" 
+		/>
+		
+</cfhttp>
+
+<!--- 
+	We have asked for the web service information to be returned
+	in WDDX format. Now, let's take that WDDX information and 
+	convert it to a native ColdFusion object (this is the automatic 
+	step we miss when we don't use CFInvoke of CreateObject()).
+--->
+<cfwddx 
+	action="wddx2cfml" 
+	input="#Trim( objGet.FileContent )#" 
+	output="objSunset"
+	/>
+	

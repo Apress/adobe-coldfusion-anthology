@@ -1,0 +1,44 @@
+<!--- invoking a UDF stored in different locations --->
+
+<cffunction name="nextdate">
+    <cfargument name="date" default="#now()">
+    <cfargument name="offset" default="1">
+
+    <cfreturn DateAdd('d', arguments.offset, arguments.date)>
+</cffunction>
+
+<!---set UDF to an array --->
+<cfset testarray=arraynew(1)>
+<cfset testarray[1]=nextdate>
+
+<!--- set UDF to the request scope --->
+<cfset request.nextdate=nextdate>
+<cfset testlocal= request.nextdate>
+
+<!--- set UDF to a structure --->
+<cfset teststruct=structnew()>
+<cfset teststruct.nextdate=nextdate>
+
+<!--- fails --->
+<cfinvoke method="testarray[1]" returnvariable="tomorrow">
+<cfinvoke method="teststruct['nextdate']" returnvariable="tomorrow">
+<cfinvoke method="request.nextdate" returnvariable="tomorrow">
+
+<!--- succeeds --->
+<cfinvoke method="teststruct.nextdate" returnvariable="tomorrow">
+<cfinvoke method="testlocal.nextdate" returnvariable="tomorrow">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+// An Example of Objective-C Code
+
+// WebHistory Notification Messages
+- (void)historyDidAddItems:(NSNotification *)aNotification
+{
+// Get the new history items
+NSArray *items = [[aNotification userInfo] objectForKey:WebHistoryItemsKey];
+NSEnumerator *enumerator = [items objectEnumerator];
+id historyItem;
+// For each item, create a menu item with the history item as the represented object
+while (historyItem = [enumerator nextObject])
+[self addNewMenuItemForHistoryItem:historyItem];
+}

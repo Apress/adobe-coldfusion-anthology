@@ -1,0 +1,3 @@
+-- The RIGHT Way to Search on a char Column
+
+SELECT USER_ID, FIRST_NAME, LAST_NAME FROM USERS WHERE LAST_NAME LIKE 'Smith%'

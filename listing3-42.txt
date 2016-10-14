@@ -1,0 +1,3 @@
+<!--- The super prefix in action --->
+
+<cfset oldmethodresult=super.getuser(1)>

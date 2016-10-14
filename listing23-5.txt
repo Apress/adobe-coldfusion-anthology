@@ -1,0 +1,15 @@
+<!--- BaseDAO init() method --->
+
+<cffunction name="init" returntype="BaseDAO" access="public" output="false" hint=
+"I return the initialized Base DAO.">
+    <cfargument name="FieldNameList" type="string" required="true">
+    <cfargument name="TableName" type="string" required="true">
+    <cfargument name="IdFieldName" type="string" required="true">
+    <cfscript>
+        variables.FieldNameList = arguments.FieldNameList;
+        variables.TableName = arguments.TableName;
+        variables.IdFieldName = arguments.IdFieldName;
+    </cfscript>
+    <cfreturn This>
+</cffunction>
+

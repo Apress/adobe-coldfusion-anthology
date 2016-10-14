@@ -1,0 +1,16 @@
+<--- Direct Call to onRequest() for Error Formatting --->
+
+<cffunction name="onMissingTemplate" returntype="boolean" hint="calls onrequest to output a general missing template message">
+    <cfargument name="targetPage" type="string">
+    <cfset onrequest('/missingtemplate.cfm')>
+    <cfreturn True>
+</cffunction>
+
+<cffunction name="onRequest" returnType="void">
+ <cfargument name="thePage">
+ <cfinclude template="/global/meta.cfm">
+ <cfinclude template="/global/header.cfm">
+ <cfinclude template="#arguments.thePage#">
+ <cfinclude template="/global/footer.cfm">
+</cffunction>
+

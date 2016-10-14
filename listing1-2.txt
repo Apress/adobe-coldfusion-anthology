@@ -1,0 +1,5 @@
+<!--- Application.cfc (version 1) --->
+
+<cfcomponent output="false">
+</cfcomponent>
+

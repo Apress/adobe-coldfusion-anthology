@@ -1,0 +1,9 @@
+<!---  Service CFC example --->
+
+<cfcomponent>
+<cffunction name="GetEmployeeContactInfo" access="remote" returnformat="json">
+    <cfargument name="EmployeeId">
+    <cfset EmployeeObj = CreateObject("cfc.Employee").init(employeeid=arguments.EmployeeId)>
+    <cfreturn EmployeeObj.GetContactData()>
+</cffunction>
+</cfcomponent>

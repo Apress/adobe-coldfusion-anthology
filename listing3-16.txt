@@ -1,0 +1,18 @@
+<!--- Using argumentCollection to pass named parameters --->
+
+<cfset User=StructNew()>
+<cfset User.Name="Michael">
+<cfset User.Password="MyPass">
+<cfset UserID=GetAuthor(argumentCollection=User)>
+
+
+
+
+
+
+
+
+
+
+
+

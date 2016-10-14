@@ -1,0 +1,8 @@
+<!--- Getter Logic Using variables.instance --->
+
+if (structKeyExists(variables.instance,name)) {
+    return variables.instance[name];
+} else {
+    throw("Expression_", "Element #name# is undefined in a Java object of type class
+    coldfusion.runtime.TemplateProxy.");
+}

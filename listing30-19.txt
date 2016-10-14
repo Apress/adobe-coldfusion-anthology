@@ -1,0 +1,3 @@
+<!-- Using the list() method -->
+
+query = getTransfer().list("post.Post");

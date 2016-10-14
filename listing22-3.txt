@@ -1,0 +1,13 @@
+<!---  Value Object example --->
+
+<cfcomponent alias="com.EmployeeVO">
+    <cfproperty name="FirstName" type="string">
+    <cfproperty name="LastName" type="string">
+    <cfproperty name="EmployeeId" type="numeric">
+    <cffunction name="init" access="public" returntype"employeeObj">
+        <cfreturn this>
+    </cffunction>
+    <cfset this.FirstName=''>
+    <cfset this.LastName=''>
+    <cfset this.EmployeeId=''>
+</cfcomponent>

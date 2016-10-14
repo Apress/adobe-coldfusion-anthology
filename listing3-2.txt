@@ -1,0 +1,7 @@
+<!--- Setting a UDF to the Request scope --->
+
+<cffunction name="nextdate">
+     Function code
+</cffunction>
+<cfset request.nextdate = nextdate>
+<cfset tomorrow= request.nextdate()>

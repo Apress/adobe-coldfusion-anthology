@@ -1,0 +1,7 @@
+<!-- Customer XML -->
+
+<customer>
+    <fname>John</fname>
+    <lname>Doe</lname>
+    <active>true</active>
+</customer>

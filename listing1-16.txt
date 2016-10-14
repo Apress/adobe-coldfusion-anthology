@@ -1,0 +1,93 @@
+<!--- Application.cfc (Version 11) --->
+
+<cfcomponent output="false">
+  <cfset this.name = "OurApplication">
+  <cfset this.applicationTimeout = createTimeSpan(0,2,0,0)>
+  <cfset this.clientManagement = false>
+  <cfset this.sessionManagement = true>
+
+  <cffunction name="onApplicationStart" returnType="boolean" output="false">
+
+     <cfset application.dsn = "foo">
+     <cfset application.adminEmail = "ray@camdenfamily.com">
+
+     <cfreturn true>
+  </cffunction>
+
+  <cffunction name="onRequestStart" returnType="boolean" output="false">
+     <cfargument name="thePage" type="string" required="true">
+     <cfinclude template="udfs.cfm">
+     <cfreturn true>
+  </cffunction>
+
+<!--- onRequest method with print functionality --->  
+<cffunction name="onRequest" returnType="void">
+  <cfargument name="thePage" type="string" required="true">
+  <cfset var buffer = "">
+  <cfset var thisPage = "">
+  <cfif isDefined("url.p")>
+     <cfsavecontent variable="buffer">
+        <cfinclude template="#arguments.thePage#">
+     </cfsavecontent>
+     <cfset buffer = reReplace(buffer,".*?<!-- Page Body -->","")>
+     <cfset buffer = reReplace(buffer,"<!-- Page Body -->.*","")>
+     <cfoutput>#buffer#</cfoutput>
+  <cfelse>
+     <cfinclude template="#arguments.thePage#">
+  </cfif>
+</cffunction>
+
+
+  <cffunction name="onRequestEnd" returnType="void" output="true">
+     <cfargument name="thePage" type="string" required="true">
+     <cfoutput>
+        <p align="right">
+        Copyright #year(now())#
+       </p>
+     </cfoutput>
+  </cffunction>
+  
+  
+  <cffunction name="onSessionStart" returnType="void" output="false">
+
+     <cfset session.started = now()>
+     <cfset session.numberofpagesvisited = 0>
+
+  </cffunction>
+
+  <cffunction name="onError" returnType="void" output="false">
+     <cfargument name="exception" required="true">
+     <cfargument name="eventname" type="string" required="true">
+
+     <cfmail to="#application.adminEmail#" from="#application.adminEmail#"
+      subject="Error!" type="html">
+       <cfdump var="#exception#" label="Exception">
+       <cfdump var="#cgi#" label="cgi">
+       <cfdump var="#form#" label="form">
+     </cfmail>
+
+     <cflocation url="error.cfm" addToken="false">
+  </cffunction>
+
+  <cffunction name="onSessionEnd" returnType="void" output="false">
+    <cfargument name="sessionScope" type="struct" required="true">
+    <cfargument name="appScope" type="struct" required="false">
+    <cfset var duration = dateDiff("n", arguments.sessionScope.started, now())>
+    <cflog file="#this.name#" text="Session timed out after #duration# minutes.">
+  </cffunction>
+ 
+  <cffunction name="onApplicationEnd" returnType="void" output="false">
+     <cfargument name="applicationScope" required="true">
+
+     <cflog file="#this.name#" text="Application timed out.">
+  </cffunction>
+  
+</cfcomponent>
+
+
+
+
+
+
+
+

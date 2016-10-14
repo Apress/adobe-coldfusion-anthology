@@ -1,0 +1,23 @@
+<!--- Example1.cfm --->
+
+<!--- define application --->
+<cfapplication name="oldSchool" sessionManagement=true>
+
+<!--- initialize application variables --->
+<cfif not isDefined("application.init") or isDefined("url.reinit")>
+  <cfset application.dsn = "foo">
+  <cfset application.adminemail = "ray@camdenfamily.com">
+  <cfset application.init = true>
+</cfif>
+
+<!--- load UDFs that my pages may need --->
+<cfinclude template="udfs.cfm">
+
+<!--- If something goes wrong, run this file and blame the management --->
+<cferror type="exception" template="error.cfm">
+
+<!--- secure the admin folder --->
+<cfif findNoCase("/admin", cgi.script_name) and not isDefined("session.loggedIn")>
+<cfinclude template="login.cfm">
+<cfabort>
+</cfif>

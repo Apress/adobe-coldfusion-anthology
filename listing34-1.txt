@@ -1,0 +1,16 @@
+<!-- First XML Example: A Simple Array with Four Elements -->
+
+<people>
+    <person>
+        Jacob
+    </person>
+    <person>
+        Lynn
+    </person>
+    <person>
+        Noah
+    </person>
+    <person>
+        Mazie
+    </person>
+</people>

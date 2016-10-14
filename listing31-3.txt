@@ -1,0 +1,11 @@
+<!--- Application.cfc --->
+
+<cfcomponent extends="framework" output="false">
+    <cfset this.name = "fw1todo" />
+    <cfset variables.framework = {
+        defaultSection = 'todo',
+        defaultItem = 'list'
+    } />
+</cfcomponent>
+
+

@@ -1,0 +1,10 @@
+<!--- Direct Injection of onMissingMethod() --->
+
+function newfunc(missingMethodName,missingMethodArguments) {
+    return "New method (" & missingMethodName & ")";
+}
+obj = createObject("component","someobj");
+obj.setFoo(42);
+obj.onMissingMethod = newfunc;
+writeOutput(obj.wibble() & "<br>");
+writeOutput(obj.getFoo() & "<br>");

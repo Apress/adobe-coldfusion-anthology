@@ -1,0 +1,5 @@
+<!--- Specifying unnamed (positional) arguments with the argument verb --->
+<invoke component="util.myCFC" method="doSomething">
+    <argument value="firstArg" />
+    <argument value="2" />
+</invoke>

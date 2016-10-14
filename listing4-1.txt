@@ -1,0 +1,12 @@
+<!--- Using onMissingTemplate() to Send Error Reports --->
+
+<cfmail to="erroradmin@mydomain.com" from="erroradmin@mydomain.com" subject="#CGI.HTTP_Host# 404 error - #CGI.Script_Name#" type="HTML">
+    <cfdump var="#CGI#" label="CGI">
+    <cfif NOT StructIsEmpty(URL)>
+       <cfdump var="#URL#" label="URL">
+    </CFIF>
+    <cfif NOT StructIsEmpty(Form)>
+       <cfdump var="#Form#" label="Form">
+    </cfif>
+</cfmail>
+

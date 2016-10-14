@@ -1,0 +1,9 @@
+<!--- Task manager application --->
+
+<fuseaction name="showall">
+    <set name="max" value="20" />
+    <include template="qry_task_list" />
+    <xfa name="view" value="task.showtask" />
+    <include template="dsp_task_list" contentvariable="body" />
+    <include template="lay_main" />
+</fuseaction>

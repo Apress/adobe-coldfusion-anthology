@@ -1,0 +1,6 @@
+<!--- cfcomponent syntax to include in Application.cfc --->
+
+<cfcomponent extends="framework" output="false">
+    <cfset this.name = "fw1test" />
+</cfcomponent>
+

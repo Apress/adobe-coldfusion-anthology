@@ -1,0 +1,21 @@
+<!---Sample list.cfc --->
+
+component name="List" {
+      public List function init() {
+            variables.templatePath = "/projectname/layouts";
+            return this;
+      }
+
+      public void function render( any model ) {
+            include template="#variables.templatePath#/list.cfm";
+      }
+      
+      public string function displayPageLinks( ) {
+            var returnString = "";
+            // add logic here to concatenate the appropriate page display links for paging
+            return returnString;
+      }
+
+      // other view helper methods here
+}
+

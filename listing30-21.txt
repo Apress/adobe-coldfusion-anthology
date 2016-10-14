@@ -1,0 +1,5 @@
+<!-- Using the listByPropertyMap() method -->
+
+map = StructNew();
+map.title = "my first post";
+query = getTransfer().listByPropertyMap("post.Post", map);

@@ -1,0 +1,3 @@
+<!-- Using the readByProperty() method -->
+
+post = transfer.readByProperty("post.Post", "Title", "My First Post");

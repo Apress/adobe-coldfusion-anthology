@@ -1,0 +1,11 @@
+<!--- Error due to a missing single required parameter --->
+
+<cfset nextdate()>
+<cffunction name="nextdate">
+  <cfargument name="date" required="yes">
+</cffunction>
+
+
+
+
+

@@ -1,0 +1,11 @@
+<!--- Using cfchart in Your Slide --->
+
+<cfpresentationslide>
+    <h3>Total Sales</h3>
+    <cfchart format="jpg" chartwidth="500" show3d="yes">
+        <cfchartseries type="pie" query="members" itemcolumn="activeMembers"
+              valuecolumn="premier">
+    </cfchart>
+</cfpresentationslide>
+
+<!--- Note: This will not work unless you have a query called members to pull from --->

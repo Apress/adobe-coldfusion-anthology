@@ -1,0 +1,8 @@
+<!--- A simple ColdFusion component --->
+
+<cfcomponent output="false">
+    <cffunction name="sayHello" output="false" access="remote" returnType="string">
+        <cfargument name="name" type="string" required="false" default="Nameless">
+        <cfreturn "Hello, #arguments.name#">
+    </cffunction>
+</cfcomponent>

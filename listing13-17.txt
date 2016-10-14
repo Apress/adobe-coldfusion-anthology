@@ -1,0 +1,17 @@
+<!-- Customer.java -->
+/**
+ * Customer.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.2.1 Jun 14, 2005 (09:15:57 EDT) WSDL2Java emitter.
+ */
+
+package com.example.customer_wsdl;
+public class Customer  implements java.io.Serializable {
+    private java.lang.String fname;
+    private java.lang.String lname;
+    private boolean active;
+    private com.example.customer_wsdl.OrderNumber[] order;
+    private com.example.customer_wsdl.Address[] address;
+...
+}

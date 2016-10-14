@@ -1,0 +1,9 @@
+<!--- Approximate ColdFusion Equivalent of Listing 5-1 --->
+
+<cffunction name="addObserverSelectorNameObject" returntype="void">
+<cfargument name="observer" type="id" >
+<cfargument name="aSelector" type="SEL" >
+<cfargument name="notificationName" type="NSString*" >
+<cfargument name="anObject" type="id" >
+...
+</cffunction>

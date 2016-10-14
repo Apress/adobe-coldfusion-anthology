@@ -1,0 +1,22 @@
+<!-- An Example Using serializeJSON -->
+
+<cfset data = queryNew("id,name")>
+<cfset queryAddRow(data, 1)>
+<cfset querySetCell(data, "id", 1)>
+<cfset querySetCell(data, "name", "Raymond")>
+<cfset queryAddRow(data, 1)>
+<cfset querySetCell(data, "id", 2)>
+<cfset querySetCell(data, "name", "Jacob")>
+<cfset data2 = ["Jacob", "Lynn", "Noah", "Mazie"]>
+<cfset json1 = serializeJSON(data)>
+<cfset json2 = serializeJSON(data2)>
+<cfoutput>#json1#</cfoutput>
+<p>
+<cfoutput>#json2#</cfoutput>
+
+<!-- Using DeserializeJSON to Convert JSON Output into ColdFusion Data -->
+
+<cfset newData = deserializeJSON(json1)>
+<cfset newData2 = deserializeJSON(json2)>
+<cfdump var="#newData#">
+<cfdump var="#newData2#">

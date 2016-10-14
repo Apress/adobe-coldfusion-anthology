@@ -1,0 +1,7 @@
+<!-- /navigation/circuit.xml in an application that uses implied circuits and XML for fuseactions -->
+
+<circuit access="public">
+    <fuseaction name=”showMenu” />
+        <include template=”dspMenu” />
+    </fuseaction>
+</circuit>

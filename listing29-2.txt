@@ -1,0 +1,6 @@
+<!--- A Simple Reactor Example --->
+  <cfset Reactor = CreateObject("Component", "reactor.reactorFactory").init(expandPath("reactor.xml"))>
+  <cfset users = reactor.createGateway("User").getAll()>
+  <cfoutput query="users">
+      <p>#firstName# #lastName#</p>
+  </cfoutput>

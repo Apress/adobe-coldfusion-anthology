@@ -1,0 +1,11 @@
+<!--- Creating a watermark using a string --->
+
+<cfdocument format="pdf" name="mypdf">
+    <cfloop index="x" from="1" to="90">
+        This is a PDF document.
+    </cfloop>
+</cfdocument>
+
+<cfpdf action="addwatermark" source="mypdf" destination="mypdf5.pdf" text="Documented generated for Darth Vader's eyes only" foreground="yes" overwrite="yes">
+
+

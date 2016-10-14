@@ -1,0 +1,16 @@
+<!--- Standard Code Allowing User to Delete a Page --->
+
+public string function deletePage( pageId ) {
+    if ( !structKeyExists( session, "userId" ) ) {
+        redirectTo( ”/login” );
+    }
+    else {
+        var user = UserService.getbyId( session.userId );
+        if ( user.isAllowedTo( "Page", "delete" ) ) {
+            return PageService.delete( pageId );
+        }
+        else {
+            return "permission denied";
+        };
+    };
+};

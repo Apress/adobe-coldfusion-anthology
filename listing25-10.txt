@@ -1,0 +1,13 @@
+<!--- Fusebox 5.x code --->
+
+<fuseaction name="showquote">
+<cf:try>
+    <invoke object="application.stockTracker" method="getQuote" returnvariable="stockPrice">
+        <argument name="symbol" value="#attributes.symbol#" />
+    </invoke>
+    <include template="dspStockQuote" />
+    <cf:catch type="any">
+        <include template="dspQuoteFailed" />
+    </cf:catch>
+</cf:try>
+</fuseaction>

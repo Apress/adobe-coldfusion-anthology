@@ -1,0 +1,10 @@
+<!--- A sample traditional query --->
+
+  <cfquery name="getUsers" datasource="myDSN">
+      SELECT *
+      FROM User
+  </cfquery>
+
+  <cfoutput query="getUsers">
+      <p>#firstName# #lastName#</p>
+  </cfoutput>

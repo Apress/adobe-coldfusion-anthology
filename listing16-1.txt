@@ -1,0 +1,5 @@
+<!--- Connecting to Exchange --->
+
+<cfexchangeconnection action = "open" connection = "exConn" 
+   server = "#mailhost#" mailboxName = "#mailbox#"
+   username = "#username#" password = "#password#">

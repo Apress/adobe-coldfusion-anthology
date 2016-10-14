@@ -1,0 +1,7 @@
+<!--- productXMLdisplay.cfm --->
+
+<productList>
+<cfoutput query=”productList”>
+    <product name=”#Name#” title=”#Title#” />
+</cfoutput>
+</productList>

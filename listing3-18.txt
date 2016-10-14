@@ -1,0 +1,15 @@
+<!--- Creating a variable using the results from a function --->
+
+<cfinvoke method="nextdate" returnvariable="tomorrow">
+
+
+
+
+
+
+
+
+
+
+
+

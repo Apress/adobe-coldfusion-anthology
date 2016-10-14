@@ -1,0 +1,13 @@
+<!--- Setter Logic Restricted to Specific Fields --->
+
+if (structKeyExists(missingMethodArguments,name) and
+(not structKeyExists(variables,"writableFields") or
+listFindNoCase(variables.writableFields,name) neq 0)) {
+    variables[name] = missingMethodArguments[name];
+} else if (structKeyExists(missingMethodArguments,1) and
+(not structKeyExists(variables,"writableFields") or
+listFindNoCase(variables.writableFields,name) neq 0)) {
+    variables[name] = missingMethodArguments[1];
+} else {
+    throw("Application", "The #uCase(name)# parameter to the get#name# function is required but was not passed in.");
+}

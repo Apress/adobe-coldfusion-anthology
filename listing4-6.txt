@@ -1,0 +1,21 @@
+<!--- Handling Known Request Errors --->
+
+<cffunction name="onMissingTemplate" returntype="boolean" hint="redirect malformed requests or handle the error">
+   <cfargument name="targetPage" type="string">
+ 
+    <!--- check for html tag in request --->
+    <cfif REFind('<[^>]+>', arguments.targetPage)>
+       <cflocation url="#REReplace(arguments.targetPage, '<[^>]+>', '', 'all')#" statuscode="301" addtoken="No">
+    </cfif>
+
+    <!--- check for space character in request --->
+    <cfif REFind('\s', arguments.targetPage)>
+       <cflocation url="#REReplace(arguments.targetPage, '\s', '', 'all')#" statuscode="301" addtoken="No">
+    </cfif>
+
+    <!--- include template to handle unexpected errors --->
+    <cfinclude template="/missingtemplate.cfm">
+
+    <cfreturn True>
+</cffunction>
+

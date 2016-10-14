@@ -1,0 +1,3 @@
+<!-- Example of getting values from a TransferObject -->
+
+<h2><a href="displayPost.cfm?ID=#post.getIDPost()#">#post.getTitle()#</a></h2>

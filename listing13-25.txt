@@ -1,0 +1,16 @@
+<!--- The XML Schema Definition for a ColdFusion Structure --->
+
+<schema elementFormDefault="qualified" targetNamespace="http://xml.apache.org/xml-soap">
+    <import namespace="http://rpc.xml.coldfusion"/>
+    <complexType name="mapItem">
+        <sequence>
+           <element name="key" nillable="true" type="xsd:anyType"/>
+           <element name="value" nillable="true" type="xsd:anyType"/>
+         </sequence>
+    </complexType>
+    <complexType name="Map">
+         <sequence>
+            <element maxOccurs="unbounded" minOccurs="0" name="item" type="apachesoap:mapItem"/>
+         </sequence>
+    </complexType>
+</schema>

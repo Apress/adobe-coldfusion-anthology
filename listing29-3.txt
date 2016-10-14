@@ -1,0 +1,17 @@
+<!--- Selecting a user from the database and putting that data into a form --->
+  <cfset Reactor = CreateObject("Component",  "reactor.reactorFactory").init(expandPath("reactor.xml"))>
+  <cfset User = reactor.createRecord("User").load(userId=1)>
+
+  <cfform name="UserForm" action="edituser.cfm">
+       <cfinput type="hidden" name="userId" value="#User.getUserId()#">
+       <p>
+          First Name: <cfinput type="text" name="firstName" value="#User.getFirstName()#">
+       </p>
+       <p>
+          Last Name: <cfinput type="text" name="lastName" value="#User.getLastName()#">
+      </p>
+      <p>
+          <cfinput type="submit" name="Submit" value="Submit">
+     </p>
+  </cfform>
+

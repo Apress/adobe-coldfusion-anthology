@@ -1,0 +1,34 @@
+<!--- A "String" Custom Data Type (string.cfc) --->
+component name="string.cfc" {
+	
+	public string  field( string propertyName, string  propertyValue, string  dataTypeProperties ) {
+	      var properties = setProperties( dataTypeProperties );
+	      return '<input type="text" name="#propertyName#" size="#properties.size#" maxlength="#properties.maxLength#" value="#propertyValue#" />';
+	}
+
+	public string function display( string propertyValue, string dataTypeProperties ) {
+                   var properties = setProperties( dataTypeProperties );
+                   return propertyValue;
+	}
+  	
+
+	public string process( string propertyName, input  input, string dataTypeProperties ) {
+	      var properties = setProperties( dataTypeProperties );
+ 	      return input.get( fieldName );
+	}
+
+	private struct function setProperties( string dataTypeProperties, string defaultPropertyList ) {
+	/* This allows you to set arbitrary properties for different data types from a 
+delimited list. So if you want to be able to set the size and maxlength for a string, you'd pass in dataTypeProperties = "size=20|maxLength=50" and this will set size and maxLength properties that can be used by the other methods.  */
+	      var propertyValuePair = "";
+	      var i = 0;
+	      for ( i = 1; i lte listLen( defaultPropertyList , "|" ); i++ ) {
+	           propertyValuePair = listGetAt( defaultPropertyList, i, "|" );
+	           if ( !structKeyExists( dataTypeProperties, listGetAt( propertyValuePair, 1, "=" ) ) && listLen( propertyValuePair, "=" ) == 2 ) { 
+                           dataTypeProperties[ listGetAt( propertyValuePair, 1, "=" ) ] =  listGetAt( propertyValuePair, 2, "=" ); 
+                        };
+	       };
+	      return dataTypeProperties;
+	}
+}
+

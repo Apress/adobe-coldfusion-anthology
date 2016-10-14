@@ -1,0 +1,5 @@
+<!--- Resizing While Maintaining Aspect Ratio --->
+
+<cfimage action="read" source="lobster.jpg" name="myImg">
+<cfset ImageScaleToFit(myImg, 100, 75)>
+<cfimage action="writeToBrowser" source="#myImg#">

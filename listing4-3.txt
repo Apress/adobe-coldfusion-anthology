@@ -1,0 +1,9 @@
+<!--- Minimal onMissingTemplate() method --->
+
+<cffunction name="onMissingTemplate" returnType="boolean" hint="outputs a general missing template message">
+    <cfargument type="string" name="targetPage" required="true">
+     The template you want is missing
+      ---other code here---
+    <cfreturn true>
+</cffunction>
+

@@ -1,0 +1,6 @@
+<!-- getDatasource() method -->
+
+datasource = application.transferFactory.getDatasource();
+<cfquery name="qPosts" datasource="#datasource.getName()#" username="#datasource.getUsername()#" password="# datasource.getUsername()#">
+    <!--- query here --->
+</cfquery>

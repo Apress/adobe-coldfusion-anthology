@@ -1,0 +1,7 @@
+<!--- Demonstration of proxy.cfc --->
+
+a = createObject("component","alpha");
+p = createObject("component","proxy").init(a);
+writeOutput(p.a() & "<br>");
+writeOutput(p.echo(data="named data") & "<br>");
+writeOutput(p.echo("unnamed data") & "<br >");

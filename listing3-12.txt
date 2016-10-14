@@ -1,0 +1,27 @@
+<!--- The second CFSET will work in CF9 and throw an error in earlier versions. --->
+<cfset var test=structnew()>
+<cfset var test.variable="local variable">
+
+<!--- This CFSET will assign the variable name to the user structure in the variables scope --->
+<cfset test.variable="Michael">
+
+<!--- Local variable setting example: --->
+<cffunction name="testfunction">
+    <cfargument name="variable1" default="set to Arguments ">
+
+    <cfset var variable2="set to local scope">
+    <cfset local.variable2="overwrites variable2 in the local scope">
+
+    <cfset variable3="set to Variables scope">
+    … function code…
+</cffunction>
+
+
+
+
+
+
+
+
+
+

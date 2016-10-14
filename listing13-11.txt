@@ -1,0 +1,21 @@
+<!-- Customer Complex Type with Multiple Addresses -->
+<s:complexType name="Customer">
+  <s:sequence>
+    <s:element minOccurs="1" maxOccurs="1" name="fname" type="s:string" />
+    <s:element minOccurs="1" maxOccurs="1" name="lname" type="s:string" />
+    <s:element minOccurs="1" maxOccurs="1" name="active" type="s:boolean" />
+    <s:element minOccurs="1" maxOccurs="unbounded" name="address" type="tns:Address" />
+  </s:sequence>
+</s:complexType>
+
+<s:complexType name="Address">
+  <s:sequence>
+    <s:element minOccurs="1" maxOccurs="1" name="address1" type="s:string" />
+    <s:element minOccurs="1" maxOccurs="1" name="address2" type="s:string" />
+    <s:element minOccurs="1" maxOccurs="1" name="city" type="s:string" />
+    <s:element minOccurs="1" maxOccurs="1" name="state" type="s:string" />
+    <s:element minOccurs="1" maxOccurs="1" name="zip" type="s:string" />
+  </s:sequence>
+  <s:attribute name="type" type="s:string" />
+</s:complexType>
+

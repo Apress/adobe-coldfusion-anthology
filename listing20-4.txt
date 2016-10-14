@@ -1,0 +1,20 @@
+<!--- Passing a Session Key --->
+
+deletePage( pageId, sessionUUID ) {
+    // Load the user
+    var siteUser = UserService.getbySessionUUID( sessionUUID );
+    // Validate session key
+    if ( siteUser.isValidSiteUser() ) {
+        // Validate security
+        if ( siteUser.isAllowedTo( "Page", "delete" ) {
+            PageService.delete( pageId );
+            return "Page deleted";
+        }
+        else {
+            return "Permission denied";
+        };
+    }
+    else {
+        return "Please authenticate";
+    };
+}

@@ -1,0 +1,16 @@
+<!--- getbyFilter base method --->
+
+<cffunction name="getbyFilter" returntype="query" output="no" hint="I return a recordset containing all of the records matching the provided filter.">
+    <cfargument name="Filter" type="string" required="no" default="#variables.DefaultFilter#" hint="The SQL Where clause (excluding the actual word 'WHERE').">
+    <cfargument name="FieldNameList" type="string" required="no" default="#variables.DefaultFieldNameList#" hint="The field names to be selected by the query.">
+    <cfargument name="OrderBy" type="string" required="no" default="#variables.DefaultOrderBy#" hint="The sort order of the query.">
+    <cfset var GetbyFilter =””>
+    <cfquery name="GetbyFilter" datasource="#variables.datasource#">
+        SELECT #arguments.FieldNameList#
+        FROM #variables.TableName#
+        WHERE #arguments.Filter#
+        ORDER BY #arguments.OrderBy#
+    </cfquery>
+    <cfreturn GetbyFilter>
+</cffunction>
+

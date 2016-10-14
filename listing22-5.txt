@@ -1,0 +1,34 @@
+<!--- Some authentication functions --->
+
+<cffunction name="Login" access="remote" returntype="string" hint="Returns a session token if username and password is valid">
+    <cfargument name="Username">
+    <cfargument name="Password">
+    <cfset var my = StructNew()>
+    <cfset my.SecurityToken = "FAILED">
+    <!--- Call custom function to validate supplied credentials --->
+    <cfif CredentialsAreValid(username=arguments.Username, password=arguments.Password)>
+        <!--- Call custom function to create a new token for the user in the database --->
+        <cfset my.SecurityToken = CreateNewSecurityToken(username=arguments.Username)>
+    </cfif>
+    <!--- Return security token, or FAILED string --->
+    <cfreturn my.SecurityToken>
+</cffunction>
+<cffunction name="SecurityTokenIsValid" access="remote" returntype="boolean" hint="Validates a security token.">
+    <cfargument name="SecurityToken">
+    <cfargument name="Username">
+    <cfset var my = StructNew()>
+    <cfquery name="my.qryTokenLookup" datasource="TokenDatabase">
+        SELECT token
+        FROM SecurityTokens
+        WHERE username = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Username#">
+        AND token = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.SecurityToken#">
+        AND lastupdate_timestamp > <cfqueryparam cfsqltype="cf_sql_date" value="#DateAdd("m",-20,Now())#">
+    </cfquery>
+    <cfif my.qryTokenLookup.RecordCount EQ 1>
+        <!--- Call custom function to update the lastupdate_timestamp to track session activity --->
+        <cfset UpdateSecurityTokenTimestamp(username=arguments.Username, securitytoken=arguments.SecurityToken)>
+        <cfreturn true>
+    <cfelse>
+        <cfreturn false>
+    </cfif>
+</cffunction>

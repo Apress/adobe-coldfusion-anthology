@@ -1,0 +1,6 @@
+<!--- Basic UDF creation --->
+
+<cffunction name="GetUser">
+     Function code
+</cffunction>
+

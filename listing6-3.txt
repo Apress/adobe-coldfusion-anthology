@@ -1,0 +1,15 @@
+<!--- Reading a PDF object from a file with cfpdf --->
+
+<cfdocument format="pdf" name="mypdf">
+    This is a PDF document.
+</cfdocument>
+
+<cfset fileWrite(expandPath("./mypdf2.pdf"), mypdf)>
+<cfpdf action="read" source="./mypdf2.pdf" name="mypdfob">
+
+<cfif isPDFObject(mypdfob)>
+    <p>
+        The variable mypdfob is a PDF object.
+    </p>
+</cfif>
+

@@ -1,0 +1,6 @@
+<!-- errorsgateway.cfc: A Simple Event Gateway -->
+
+<cfcomponent output="false">
+</cfcomponent>
+
+

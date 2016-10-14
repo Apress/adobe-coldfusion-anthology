@@ -1,0 +1,18 @@
+<!--- Reading meeting requests --->
+
+<cfexchangemail action="get" name="inbox" connection="exConn" folder="Inbox">
+    <cfexchangefilter name="timeReceived" from="#start#" to="#end#">
+</cfexchangemail>
+
+<cfloop query="inbox">
+    <cfif len(meetingUID) gt 1>
+        <!--- meetingUID is a column returned by the get operation above  --->
+        <cfexchangemail action = "getMeetingInfo" meetingUID = "#meetingUID#" name = "meetingRequest" connection = "exConn">
+    </cfif>
+</cfloop>
+
+
+
+
+
+

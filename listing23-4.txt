@@ -1,0 +1,13 @@
+<!--- A sample ProductDAO init() method --->
+
+<cffunction name="init" returntype="ProductDAO" access="public" output="false" hint="I initialize the Product DAO with Product specific parameters.">
+    <cfscript>
+        var Arguments = StructNew();
+        Arguments.FieldNameList = "ProductID,Title,Price";
+        Arguments.TableName = "tbl_Product";
+        Arguments.IdFieldName = "ProductId";
+        Super.Init(argumentCollection=Arguments);1
+    </cfscript>
+    <cfreturn This>
+</cffunction>
+

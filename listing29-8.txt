@@ -1,0 +1,22 @@
+<!--- Example Using an Iterator --->
+
+<cfset Reactor = CreateObject("Component", "reactor.reactorFactory").init(expandPath("reactor.xml"))>
+
+<cfset User = reactor.createRecord("User").load(userId=1)>
+<cfset AddressIterator = User.getAddressIterator()>
+
+<cfoutput>
+    <p>#User.getFirstName()# #User.getLastName()#</p>
+
+    <cfloop condition="#AddressIterator.hasMore()#">
+        <cfset Address = AddressIterator.getNext()>
+        <p>
+        #Address.getStreet()#<br>
+        #Address.getCity()#, #Address.getState()# #Address.getZip()#
+        </p>
+    </cfloop>
+</cfoutput>
+
+
+
+

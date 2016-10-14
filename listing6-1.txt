@@ -1,0 +1,8 @@
+<!--- cfdocument Example --->
+
+<cfdocument format="pdf">
+    <h2>TPS Form</h2>
+    <p>
+    Please fill out your TPS form.
+    </p>
+</cfdocument>

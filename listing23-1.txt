@@ -1,0 +1,12 @@
+<!--- Part of a simple user DAO --->
+
+<cffunction name="getUser" returntype="query" output="false" hint="I return a recordset containing the requested User based on the provided User ID">
+    <cfargument name="UserID" type="numeric" required="yes" hint="The ID of the User to return">
+    <cfset var Local = StructNew()>
+    <cfquery name="Local.GetUser" datasource="#variables.datasource#">
+        SELECT UserID, FirstName, LastName
+        FROM tbl_User
+        WHERE UserID = <cfqueryparam value = "#arguments.UserID#" CFSQLType = "CF_SQL_INTEGER">
+    </cfquery>
+    <cfreturn Local.GetProduct>
+</cffunction>

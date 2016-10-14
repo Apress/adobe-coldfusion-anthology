@@ -1,0 +1,25 @@
+<!--- Method chaining with the "new" keyword --->
+
+<cfset new authors('cfbookclub').deleteallauthors()>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+<!-- Deleting a User TransferObject -->
+
+transfer = application.transferFactory.getTransfer();
+user = transfer.get("user.User", form.userid);
+transfer.delete(user);

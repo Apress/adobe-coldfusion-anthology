@@ -1,0 +1,14 @@
+<!-- Using the update() method -->
+
+transfer = application.transferFactory.getTransfer();
+//clear out the categories
+post.clearCategory();
+//loop through the categories and add them back in
+categories = listToArray(form.category);
+len = ArrayLen(categories);
+for(counter = 1; counter lte len; counter = counter + 1)
+{
+    category = transfer.get("system.Category", categories[counter]);
+    post.addCategory(category);
+}
+transfer.update(post);

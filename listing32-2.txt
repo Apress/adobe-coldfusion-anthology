@@ -1,0 +1,5 @@
+<!--- display method in a date.cfc --->
+
+public string function display( string propertyValue, string dataTypeProperties ) {
+      var properties = setProperties( dataTypeProperties );
+      return dateFormat( propertyValue, "MM/DD/YYYY" );
